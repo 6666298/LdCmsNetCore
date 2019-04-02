@@ -1,0 +1,268 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@using LdCms.Common.Enum
+@model IEnumerable<Ld_Info_Page>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 栏目管理 <span class="c-gray en">&gt;</span> 单页管理 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="text-c">
+        日期范围：
+        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" name="datemin" class="input-text Wdate" style="width:120px;" value="@ViewData["datemin"]" />
+        -
+        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" name="datemax" class="input-text Wdate" style="width:120px;" value="@ViewData["datemax"]" />
+        <select id="classId" name="classId" class="select" style="width:100px; height:31px;vertical-align: middle;">
+            <option value="">单页栏目</option>
+        </select>
+        <select id="state" name="state" class="select" style="width:100px; height:31px;vertical-align: middle;">
+            <option value="">选择状态</option>
+            <option value="0" @(ViewData["State"].ToString() == "0" ? "selected" : "")>待审核</option>
+            <option value="1" @(ViewData["State"].ToString() == "1" ? "selected" : "")>已审核</option>
+        </select>
+        <input type="text" class="input-text" style="width:350px" placeholder="输入会员编号、手机、邮箱" id="keyword" name="keyword" value="@ViewData["keyword"]" />
+        <button type="submit" class="btn btn-success radius" id="driversearch" name="driversearch" onclick="$.mainu.search()"><i class="Hui-iconfont">&#xe665;</i> 查找</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="$.mainu.deleteBatch()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="@Url.Action("list")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 公告列表</a>
+            <a href="javascript:;" class="btn btn-primary radius" onclick="$.mainu.add('新增公告','@Url.Action("add")')"><i class="Hui-iconfont">&#xe600;</i> 发布公告</a>
+        </span>
+        <span class="r">共有数据：<strong>@ViewData["Count"]</strong> 条</span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox" name="" value=""></th>
+                    <th width="120">编号</th>
+                    <th width="80">类别</th>
+                    <th width="">标题</th>
+                    <th width="80">作者</th>
+                    <th width="80">状态</th>
+                    <th width="120">加入时间</th>
+                    <th width="160">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td><input type="checkbox" name="id" value="@m.PageID"></td>
+                            <td>@m.PageID</td>
+                            <td>@m.ClassName</td>
+                            <td class="text-l">@(Html.Raw(Utility.Highlight(m.Title, ViewData["keyword"].ToString())))</td>
+                            <td>@m.Title</td>
+                            <td class="td-status">@(m.State.ToBool() ? Html.Raw("<span class='label label-success radius'>已启用</span>") : Html.Raw("<span class='label label-defaunt radius'>已停用</span>"))</td>
+                            <td>@(m.CreateDate.HasValue ? m.CreateDate.Value.ToString("yyyy-MM-dd HH:mm") : "-")</td>
+                            <td class="td-manage">
+                                @if (m.State.ToBool())
+                                {
+                                    <a title="停用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,'@m.PageID')">停用</a>
+                                }
+                                else
+                                {
+                                    <a title="启用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,'@m.PageID')">启用</a>
+                                }
+                                <a title="编辑" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.add('编辑','@Url.Action("add", new { PageID = m.PageID })','','')">编辑</a>
+                                <a title="删除" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.delete(this,'@m.PageID')">删除</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.table-sort').dataTable({
+                        "aaSorting": [[6, "desc"]],//默认第几个排序
+                        "bStateSave": true,//状态保存
+                        "aoColumnDefs": [
+                          { "orderable": false, "aTargets": [0,7] }// 制定列不参与排序
+                        ]
+                    });
+                    $.mainu.getPageClass("@ViewData["ClassId"]");
+                },
+                search: function () {
+                    $dateMin = $("input[name='datemin']").val();
+                    $dateMax = $("input[name='datemax']").val();
+                    $classId = $("select[name='classId']").val();
+                    $state = $("select[name='state']").val();
+                    $keyword = $("input[name='keyword']").val();
+                    if ($keyword == "") {
+                        if ($dateMin == "" || $dateMax=="") {
+                            layer.alert('日期范围不能空', { icon: 5 });
+                            return;
+                        }
+                    }
+                    var param = {
+                        datemin: $dateMin,
+                        datemax: $dateMax,
+                        classId: $classId,
+                        state: $state,
+                        keyword: $keyword
+                    };
+                    var url = "?" + urlEncodes(param);
+                    window.location.href = url;
+                },
+                getPageClass: function (rankId) {
+                    var url = "@Url.Action("class-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">单页栏目</option>';
+                        if (state == "success") {
+                            var str = "　";
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                var strA = str.repeat(list[i].rank - 1) + (list[i].rank == 1 ? "" : "┣");
+                                if (rankId == list[i].id)
+                                    strOption += '<option value="' + list[i].id + '" selected>' + strA +list[i].name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].id + '">' + strA + list[i].name + '</option>';
+                            }
+                        }
+                        $("#classId").html(strOption);
+                    });
+                },
+                add: function (title, url) {
+                    var index = layer.open({
+                        type: 2,
+                        title: title,
+                        content: url
+                    });
+                    layer.full(index);
+                },
+                stop: function (obj, id) {
+                    layer.confirm('确认要停用吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { NoticeId: id, state: false },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="启用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,\'' + id + '\')">启用</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                                    $(obj).remove();
+                                    layer.msg('已停用！', { icon: 5, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                start: function (obj, id) {
+                    layer.confirm('确认要启用吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { NoticeId: id, state: true },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="停用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,\'' + id + '\')">停用</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                                    $(obj).remove();
+                                    layer.msg('已启用！', { icon: 6, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                delete: function (obj, id) {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("delete")',
+                            data: { NoticeId: id },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").remove();
+                                    layer.msg('已删除！', { icon: 1, time: 2000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    });
+                },
+                deleteBatch: function () {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        var arrId = [];
+                        $("input:checkbox[name='id']:checked").each(function () {
+                            arrId.push($(this).val());
+                        });
+                        if (arrId.length == 0) {
+                            layer.msg('请选择要删除的数据！', { icon: 5, time: 2000 });
+                            return;
+                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("deletebatch")',
+                            data: { arrid: arrId },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    window.location.replace(location.href);
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 1000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+            });
+        })(jQuery);
+    </script>
+}
+

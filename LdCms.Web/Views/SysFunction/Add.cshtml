@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<article class="page-container">
+    <form action="@Url.Action("Save")" method="post" class="form form-horizontal" id="form-add">
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择分类：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box" style="width:auto;">
+                    <select class="select" size="1" id="fFirstClass" name="fFirstClass" onChange="$.mainu.getSecondFunc()">
+                        <option value="" selected>作为一级分类</option>
+                    </select>
+                </span>
+                <span class="select-box" style="width:auto; display:none;">
+                    <select class="select" size="1" id="fSecondClass" name="fSecondClass">
+                        <option value="" selected>作为二级分类</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>功能编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="fFunctionId" name="fFunctionId" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>功能名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="fFunctionName" name="fFunctionName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" checked="checked" />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $.mainu.getFunc();
+                },
+                getFunc: function () {
+                    var url = "@Url.Action("GetFunctionByParentId")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { parentid: "000000" }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var total = result.data.total;
+                            var list = result.data.list;
+                            var strOption = '<option value="" selected>作为一级分类</option>';
+                            for (var i = 0; i < list.length; i++) {
+                                strOption += '<option value="' + list[i].function_id + '">' + list[i].function_name + '</option>';
+                            }
+                            $("#fFirstClass").html(strOption);
+                        }
+                    });
+                },
+                getSecondFunc: function () {
+                    var parentId = $('#fFirstClass').val();
+                    var parentName = $('#fFirstClass').find('option:selected').text()
+                    if (parentId.length == 0) {
+                        $("#fSecondClass").html('<option value="" selected>作为二级分类</option>');
+                        $("#fSecondClass").parent("span").hide();
+                        return;
+                    }
+                    var url = "@Url.Action("GetFunctionByParentId")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { parentid: parentId }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var total = result.data.total;
+                            var list = result.data.list;
+                            var strOption = '<option value="" selected>作为二级分类</option>';
+                            for (var i = 0; i < list.length; i++) {
+                                strOption += '<option value="' + list[i].function_id + '">' + list[i].function_name + '</option>';
+                            }
+                            $("#fSecondClass").html(strOption);
+                            $("#fSecondClass").parent("span").show();
+                        }
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            function_id: {
+                                required: true,
+                                minlength: 2,
+                                maxlength: 2
+                            },
+                            function_name: {
+                                required: true,
+                                minlength: 2,
+                                maxlength: 20
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var state = $("input[name='fState']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fState: state },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+
+        })(jQuery);
+    </script>
+}
+

@@ -1,0 +1,124 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Info_Block
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<article class="page-container">
+    <form action="@Url.Action("Save",new { BlockID = Model.BlockID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>区块说明：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <input type="text" class="input-text" value="@Model.Title" placeholder="" id="fTitle" name="fTitle" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>关建字：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <input type="text" class="input-text" value="@Model.Tags" placeholder="" id="fTags" name="fTags" @(string.IsNullOrEmpty(Model.BlockID)?"":"disabled")/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">内容：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <script type="text/plain" id="fContent" name="fContent" style="width:100%;height:400px;">
+                    @(Html.Raw(Utility.ContentDecode(Model.Content)))
+                </script>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 200
+                    });
+                    //百度在线编辑器
+                    $.mainu.ueditorInit();                       
+
+                },
+                ueditorInit: function () {
+                    var ue = UE.getEditor('fContent');
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fTitle: {
+                                required: true
+                            },
+                            fTags: {
+                                required: true
+                            },
+                            fContent: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fTags = $("input[name='fTags']").val();
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fTags: fTags },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}

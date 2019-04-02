@@ -1,0 +1,200 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Info_Page
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span>栏目管理<span class="c-gray en">&gt;</span>单页管理
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+    <form action="@Url.Action("Update",new { PageID = Model.PageID })" class="form form-horizontal" id="form-add" method="post">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>栏目名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Title" placeholder="" id="fTitle" name="fTitle" disabled />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-1" id="aa">略缩图：</label>
+            <div class="formControls col-xs-8 col-sm-10">
+                <div class="file-content">
+                    <ul id="filelist" class="filelist" data-QueuedQuantity="0">
+                        <li id="picker" class="picker"><img src="~/admin/static/h-ui.admin/images/image.png" width="100" height="100" /></li>
+                    </ul>
+                    <ul id="uploadSuccessList" alt="" style="display:none;"></ul>
+                    <div style="display:none;"><input id="fImgSrc" name="fImgSrc" type="text" value="" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-1">内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <script type="text/plain" id="fContent" name="fContent" style="width:100%;height:350px;">
+                    @(Html.Raw(Utility.ContentDecode(Model.Content)))
+                </script>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-1">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-1">
+                <button class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存 </button>
+            </div>
+        </div>
+    </form>
+</div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section css{
+    <link href="~/admin/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript" src="~/admin/lib/webuploader/0.1.5/webuploader.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="~/admin/static/h-ui.admin/js/ldcms.admin.webuploader.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                    $.mainu.initImageArray();
+                    $.mainu.ueditorInit();                                  //百度在线编辑器
+                    $(".webuploader-pick").removeClass("webuploader-pick"); //去除百度上传组件选择按钮底色
+                },
+                ueditorInit: function () {
+                    var ue = UE.getEditor('fContent');
+                    ue.ready(function () {
+                        ue.setHeight(300);
+                    });
+                },
+                initImageArray: function () {
+                    var imageArray = @Html.Raw(string.IsNullOrEmpty(Model.ImgArray)?"[]": Model.ImgArray);
+                    $list = $("#filelist");
+                    $successList = $("#uploadSuccessList");
+                    $list.attr({ "data-QueuedQuantity": imageArray.length });
+                    if (imageArray.length >= 9) {
+                        $("#picker").hide();
+                    }
+                    var $li = "";
+                    var $successli = "";
+                    for (var i = 0; i < imageArray.length; i++) {
+                        if (imageArray[i].length > 0) {
+                            var fileName = imageArray[i].replace(/(.*\/)*([^.]+).*/ig, "$2");
+                            $li += `
+                            <li id="img_${fileName}">
+                                <p class="title">' + file.name + '</p>
+                                <p class="imgWrap"><img src="${imageArray[i]}" width="100" height="100"/></p>
+                                <div class="img-del-base">
+                                    <div class="img-del-bj hide"><a href="javasccript:;" data-id="${fileName}">删除</a></div>
+                                    <div class="up-result hide">成功</div>
+                                </div>
+                            </li>
+                            `;
+                            $successli += `<li id="img_${fileName}">${imageArray[i]}</li>`;
+                        }
+                    }
+                    $list.prepend($li);
+                    $successList.append($successli);
+
+                    $list.find(".imgWrap").on("mouseenter", function () {
+                        console.log("a1");
+                        var $this = $(this).parent("li");
+                        $this.find(".img-del-base").find(".img-del-bj").removeClass("hide");
+                    });
+                    $list.find(".img-del-base .img-del-bj").on("mouseleave", function () {
+                        console.log("a2");
+                        $(this).addClass("hide");
+                    });
+                    $list.find(".img-del-bj").find("a").on("click", function () {
+                        console.log("a3");
+                        var fileId = $(this).attr("data-id");
+                        $list.find("#img_" + fileId).remove();;
+                        $successList.find("#img_" + fileId).remove();
+                        var fileQueuedQuantity = parseInt($list.attr("data-QueuedQuantity")) - 1;
+                        $list.attr({ "data-QueuedQuantity": fileQueuedQuantity });
+                        if ((fileQueuedQuantity) < 9) {
+                            $("#picker").find("div:eq(1)").css({ "width": "100px", "height": "100px" });
+                            $("#picker").show();
+                        }
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fContent: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fState = $("input[name='fState']").is(':checked');
+                            var fImgArray = [];
+                            $("#uploadSuccessList li").each(function () {
+                                fImgArray.push($(this).text());
+                            });
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: {
+                                    fState: fState,
+                                    fImgArray: fImgArray
+                                },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          
+                                    var message = result.message;       
+                                    if (state == "success") {
+                                        layer.msg(message, { icon: 1, time: 3000 });
+                                    } else {
+                                        layer.msg(message, { icon: 5, time: 3000 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

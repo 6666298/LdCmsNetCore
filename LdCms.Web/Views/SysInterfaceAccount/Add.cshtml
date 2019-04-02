@@ -1,0 +1,150 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Utility
+@using LdCms.Common.Extension
+@model Ld_Sys_InterfaceAccount
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="page-container">
+    <form action="@Url.Action("Save",new { account = Model.Account })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <div class="admin-add-top-tips">提示：员工初始化密码为手机后8位组成。</div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>接口账号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Account" placeholder="输入接口帐号" id="fAccount" name="fAccount" @(string.IsNullOrEmpty(Model.Account) ? "" : "disabled") />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>接口密码：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="输入接口密码" id="fPassword" name="fPassword" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>开通权限：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box" style="width:25%;">
+                    <select class="select" size="1" id="fIsWcf" name="fIsWcf">
+                        <option value="0" @(Model.IsWcf.ToBool()?"":"selected")>关闭WCF</option>
+                        <option value="1" @(Model.IsWcf.ToBool()?"selected":"")>开启WCF</option>
+                    </select>
+                </span>
+                <span class="select-box" style="width:30%;">
+                    <select class="select" size="1" id="fIsWeb" name="fIsWeb">
+                        <option value="0" @(Model.IsWcf.ToBool()?"":"selected")>关闭WebService</option>
+                        <option value="1" @(Model.IsWeb.ToBool()?"selected":"")>开启WebService</option>
+                    </select>
+                </span>
+                <span class="select-box" style="width:25%;">
+                    <select class="select" size="1" id="fIsApi" name="fIsApi">
+                        <option value="0" @(Model.IsApi.ToBool()?"":"selected")>关闭WebApi</option>
+                        <option value="1" @(Model.IsApi.ToBool()?"selected":"")>开启WebApi</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="fDescription" name="fDescription" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true">@Model.Description</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length"></em>/100</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section css{
+    <link href="~/admin/lib/jquery.ui/1.12.1/jquery-ui.css" rel="stylesheet" />
+}
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fAccount: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fAccount = $("input[name='fAccount']").val();
+                            var fState = $("input[name='fState']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fAccount: fAccount, fState: fState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+
+        })(jQuery);
+    </script>
+}
+

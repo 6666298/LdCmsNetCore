@@ -1,0 +1,108 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@using LdCms.Common.Enum
+@model IEnumerable<Ld_Info_Notice>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pos-a" style="width:200px;left:0;top:0; bottom:0; height:100%; border-right:1px solid #e5e5e5; background-color:#f5f5f5; overflow:auto;">
+    <nav class="breadcrumb" style=" padding-left:10px;">
+        <i class="Hui-iconfont">&#xe6f5;</i> 栏目
+    </nav>
+    <ul id="tree" class="ztree"></ul>
+</div>
+<div style="margin-left:200px; height:100%;">
+    <iframe name="content-body" id="content-body" src="@Url.Action("List","InfoArtice")" frameborder="0" scrolling="no" width="100%" onload="$.mainu.setIframeHeight(this)"></iframe>
+</div>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section css{
+    <link rel="stylesheet" href="~/admin/lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+}
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $.mainu.zTree();
+                    //$.mainu.setIframeHeight(document.getElementById('content-body'));
+                },
+                setIframeHeight: function (iframe) {
+                    if (iframe) {
+                        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                        if (iframeWin.document.body) {
+                            iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+                        }
+                        if (iframe.height < document.body.clientHeight - 6) {
+                            iframe.height = document.body.clientHeight - 6;
+                        }
+                    }
+                },
+                zTree: function () {
+                    var url = "@Url.Action("class-all-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var zTree;
+                            var demoIframe;
+                            var setting = {
+                                view: {
+                                    dblClickExpand: false,
+                                    showLine: true,
+                                    selectedMulti: false
+                                },
+                                data: {
+                                    simpleData: {
+                                        enable: true,
+                                        idKey: "id",
+                                        pIdKey: "pid",
+                                        rootPId: ""
+                                    }
+                                },
+                                callback: {
+                                    beforeClick: function (treeId, treeNode) {
+                                        var zTree = $.fn.zTree.getZTreeObj("tree");
+                                        if (treeNode.isParent) {
+                                            zTree.expandNode(treeNode);
+                                            return false;
+                                        } else {
+                                            demoIframe.attr("src", treeNode.file);
+                                            return true;
+                                        }
+                                    }
+                                }
+                            };
+                            var zNodes = result.data;
+                            console.log(zNodes);
+
+                            var t = $("#tree");
+                            t = $.fn.zTree.init(t, setting, zNodes);
+                            demoIframe = $("#content-body");
+                            //demoIframe.bind("load", loadReady);
+                            var zTree = $.fn.zTree.getZTreeObj("tree");
+                            //zTree.selectNode(zTree.getNodeByParam("id", 101));
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+            });
+        })(jQuery);
+    </script>
+}
+

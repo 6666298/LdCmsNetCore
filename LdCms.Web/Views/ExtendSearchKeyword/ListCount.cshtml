@@ -1,0 +1,126 @@
+﻿@using LdCms.Model.Extend
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@using LdCms.Common.Enum
+@model IEnumerable<CountSearchKeywordByKeywordResult>
+@{
+    ViewData["Title"] = "ListCount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 扩展管理 <span class="c-gray en">&gt;</span> 搜索管理 <span class="c-gray en">&gt;</span> 关建字统计
+    <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+    <div class="text-c">
+        日期范围：
+        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" name="datemin" class="input-text Wdate" style="width:120px;" value="@ViewData["DateMin"]" />
+        -
+        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" name="datemax" class="input-text Wdate" style="width:120px;" value="@ViewData["DateMax"]" />
+        <input type="text" class="input-text" style="width:350px" placeholder="输入关键字" id="keyword" name="keyword" value="@ViewData["Keyword"]" />
+        <button type="submit" class="btn btn-success radius" id="driversearch" name="driversearch" onclick="$.mainu.search()"><i class="Hui-iconfont">&#xe665;</i> 查找</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="$.mainu.deleteBatch()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="@Url.Action("list")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 搜索列表</a>
+            <a href="@Url.Action("listCount")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 关键字统计</a>
+        </span>
+        <span class="r">共有数据：<strong>@ViewData["Count"]</strong> 条</span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox" name="" value=""></th>
+                    <th width="80">编号</th>
+                    <th width="">关键字</th>
+                    <th width="110">总搜索量</th>
+                    <th width="120">最早时间</th>
+                    <th width="120">最新时间</th>
+                    <th width="100">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td><input type="checkbox" name="id" value="@m.ID"></td>
+                            <td>@m.ID</td>
+                            <td class="text-l">@(Html.Raw(Utility.Highlight(m.Keyword, ViewData["keyword"].ToString())))</td>
+                            <td>@m.Total</td>
+                            <td>@m.MinDate.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>@m.MaxDate.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td class="td-manage">
+                                <a title="查看" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.show('编辑','@Url.Action("Show", new { ID = m.ID })')">查看</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.table-sort').dataTable({
+                        "aaSorting": [[3, "desc"]],//默认第几个排序
+                        "bStateSave": true,//状态保存
+                        "aoColumnDefs": [
+                          { "orderable": false, "aTargets": [0,6] }// 制定列不参与排序
+                        ]
+                    });
+                },
+                search: function () {
+                    $dateMin = $("input[name='datemin']").val();
+                    $dateMax = $("input[name='datemax']").val();
+                    $keyword = $("input[name='keyword']").val();
+                    if ($keyword == "") {
+                        if ($dateMin == "" || $dateMax=="") {
+                            layer.alert('日期范围不能空', { icon: 5 });
+                            return;
+                        }
+                    }
+                    var param = {
+                        datemin: $dateMin,
+                        datemax: $dateMax,
+                        keyword: $keyword
+                    };
+                    var url = "?" + urlEncodes(param);
+                    window.location.href = url;
+                },
+                show: function (title, url) {
+                    var index = layer.open({
+                        type: 2,
+                        title: title,
+                        content: url
+                    });
+                    layer.full(index);
+                },
+                deleteBatch: function () {
+                    layer.msg("不可操作删除！", { icon: 5, time: 2000 });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+            });
+        })(jQuery);
+    </script>
+}
+

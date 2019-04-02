@@ -1,0 +1,249 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@using LdCms.Common.Enum
+@model IEnumerable<Ld_Service_MessageBoard>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 客服管理 <span class="c-gray en">&gt;</span> 留言管理 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="text-c">
+        日期范围：
+        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" name="datemin" class="input-text Wdate" style="width:120px;" value="@ViewBag.datemin" />
+        -
+        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" name="datemax" class="input-text Wdate" style="width:120px;" value="@ViewBag.datemax" />
+        <select id="state" name="state" class="select" style="width:100px; height:31px;vertical-align: middle;">
+            <option value="">全部状态</option>
+            <option value="1" @(ViewBag.State=="1"?"selected":"")>已审阅</option>
+            <option value="0" @(ViewBag.State=="0"?"selected":"")>待审阅</option>
+        </select>
+        <input type="text" class="input-text" style="width:350px" placeholder="输入会员编号、手机、邮箱" id="keyword" name="keyword" value="@ViewBag.keyword" />
+        <button type="submit" class="btn btn-success radius" id="driversearch" name="driversearch" onclick="$.mainu.search()"><i class="Hui-iconfont">&#xe665;</i> 查找</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="$.mainu.deleteBatch()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="@Url.Action("list")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 留言列表</a>
+        </span>
+        <span class="r">共有数据：<strong>@ViewBag.Count</strong> 条</span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox" name="" value=""></th>
+                    <th width="120">ID</th>
+                    <th width="80">姓名</th>
+                    <th width="120">手机</th>
+                    <th width="">内容</th>
+                    <th width="80">状态</th>
+                    <th width="80">回复</th>
+                    <th width="120">创建时间</th>
+                    <th width="160">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td><input type="checkbox" name="id" value="@m.MessageID"></td>
+                            <td>@m.MessageID</td>
+                            <td>@(Html.Raw(Utility.Highlight(m.Name, ViewBag.keyword)))</td>
+                            <td>@(Html.Raw(Utility.Highlight(m.Phone, ViewBag.keyword)))</td>
+                            <td class="text-l">@m.Content</td>
+                            <td class="td-status">@(m.State.ToBool() ? Html.Raw("<span class='label label-success radius'>已审阅</span>") : Html.Raw("<span class='label label-defaunt radius'>待审阅</span>"))</td>
+                            <td>@(!string.IsNullOrEmpty(m.Reply) ? Html.Raw("<span class='label label-success radius'>已回复</span>") : Html.Raw("<span class='label label-defaunt radius'>待回复</span>"))</td>
+                            <td>@(m.CreateDate.HasValue ? m.CreateDate.Value.ToString("yyyy-MM-dd HH:mm") : "-")</td>
+                            <td class="td-manage">
+                                @if (m.State.ToBool())
+                                {
+                                    <a title="待审" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,'@m.MessageID')">待审</a>
+                                }
+                                else
+                                {
+                                    <a title="已审" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,'@m.MessageID')">已审</a>
+                                }
+                                <a title="回复" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.edit('编辑','@Url.Action("Reply", new { MessageID = m.MessageID })','','')">回复</a>
+                                <a title="查看" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.show('查看','@Url.Action("Show", new { MessageID = m.MessageID })','','')">查看</a>
+                                <a title="删除" href="javascript:;" class="ml-5" style="text-decoration:none" onclick="$.mainu.delete(this,'@m.MessageID')">删除</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.table-sort').dataTable({
+                        "aaSorting": [[7, "desc"]],//默认第几个排序
+                        "bStateSave": true,//状态保存
+                        "aoColumnDefs": [
+                          { "orderable": false, "aTargets": [0,8] }// 制定列不参与排序
+                        ]
+                    });
+                },
+                search: function () {
+                    $dateMin = $("input[name='datemin']").val();
+                    $dateMax = $("input[name='datemax']").val();
+                    $state = $("select[name='state']").val();
+                    $keyword = $("input[name='keyword']").val();
+                    if ($keyword == "") {
+                        if ($dateMin == "" || $dateMax=="") {
+                            layer.alert('日期范围不能空', { icon: 5 });
+                            return;
+                        }
+                    }
+                    var param = {
+                        datemin: $dateMin,
+                        datemax: $dateMax,
+                        state: $state,
+                        keyword: $keyword
+                    };
+                    var url = "?" + urlEncodes(param);
+                    window.location.href = url;
+                },
+                show: function (title, url) {
+                    var index = layer.open({
+                        type: 2,
+                        title: title,
+                        content: url
+                    });
+                    layer.full(index);
+                },
+                add: function (title, url, w, h) {
+                    layer_show(title, url, w, h);
+                },
+                edit: function (title, url, w, h) {
+                    layer_show(title, url, w, h);
+                },
+                stop: function (obj, id) {
+                    layer.confirm('确认要待审阅吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { messageId: id, state: false },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="已审" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,\'' + id + '\')">已审</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">待审阅</span>');
+                                    $(obj).remove();
+                                    layer.msg('待审阅！', { icon: 5, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                start: function (obj, id) {
+                    layer.confirm('确认要已审阅吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { messageId: id, state: true },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="待审" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,\'' + id + '\')">待审</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已审阅</span>');
+                                    $(obj).remove();
+                                    layer.msg('已审阅！', { icon: 6, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                delete: function (obj, id) {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("delete")',
+                            data: { messageId: id },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").remove();
+                                    layer.msg('已删除！', { icon: 1, time: 2000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    });
+                },
+                deleteBatch: function () {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        var arrId = [];
+                        $("input:checkbox[name='id']:checked").each(function () {
+                            arrId.push($(this).val());
+                        });
+                        if (arrId.length == 0) {
+                            layer.msg('请选择要删除的数据！', { icon: 5, time: 2000 });
+                            return;
+                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("DeleteBatch")',
+                            data: { arrid: arrId },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    window.location.replace(location.href);
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 1000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+            });
+        })(jQuery);
+    </script>
+}
+

@@ -1,0 +1,256 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <Content Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <EmbeddedResource Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <None Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\MVC\Admin\LoginController.cs" />
+    <Compile Remove="Framework\ApiCorsPolicyAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LdCms.BLL\LdCms.BLL.csproj" />
+    <ProjectReference Include="..\LdCms.Common\LdCms.Common.csproj" />
+    <ProjectReference Include="..\LdCms.DAL\LdCms.DAL.csproj" />
+    <ProjectReference Include="..\LdCms.IBLL\LdCms.IBLL.csproj" />
+    <ProjectReference Include="..\LdCms.Plugins.UEditor\LdCms.Plugins.UEditor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\lib\datatables\1.10.0\jquery.dataTables.min.js" />
+    <None Include="wwwroot\admin\lib\DD_belatedPNG_0.0.8a-min.js" />
+    <None Include="wwwroot\admin\lib\echarts\3.4.0\echarts.common.min.js" />
+    <None Include="wwwroot\admin\lib\expressInstall.swf" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\highcharts-3d.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\highcharts-more.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\highcharts.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\accessibility.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\accessibility.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\annotations.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\annotations.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\boost.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\boost.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\broken-axis.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\broken-axis.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\data.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\data.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\drilldown.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\drilldown.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\exporting.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\exporting.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\funnel.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\funnel.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\gantt.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\gantt.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\grid-axis.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\grid-axis.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\heatmap.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\heatmap.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\no-data-to-display.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\no-data-to-display.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\offline-exporting.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\offline-exporting.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\overlapping-datalabels.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\overlapping-datalabels.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\series-label.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\series-label.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\solid-gauge.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\solid-gauge.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\treemap.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\treemap.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\xrange-series.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\modules\xrange-series.src.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\dark-blue.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\dark-green.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\dark-unica.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\gray.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\grid-light.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\grid.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\sand-signika.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\js\themes\skies.js" />
+    <None Include="wwwroot\admin\lib\hcharts\Highcharts\5.0.6\license.pdf" />
+    <None Include="wwwroot\admin\lib\html5shiv.js" />
+    <None Include="wwwroot\admin\lib\Hui-iconfont\1.0.8\iconfont.svg" />
+    <None Include="wwwroot\admin\lib\jquery.contextmenu\jquery.contextmenu.r2.js" />
+    <None Include="wwwroot\admin\lib\jquery.cookie\jquery.cookie.js" />
+    <None Include="wwwroot\admin\lib\jquery.SuperSlide\2.1.1\jquery.SuperSlide.min.js" />
+    <None Include="wwwroot\admin\lib\jquery.ui\1.12.1\external\jquery\jquery.js" />
+    <None Include="wwwroot\admin\lib\jquery.ui\1.12.1\jquery-ui.js" />
+    <None Include="wwwroot\admin\lib\jquery.ui\1.12.1\jquery-ui.min.js" />
+    <None Include="wwwroot\admin\lib\jquery.validation\1.14.0\additional-methods.js" />
+    <None Include="wwwroot\admin\lib\jquery.validation\1.14.0\jquery.validate.js" />
+    <None Include="wwwroot\admin\lib\jquery.validation\1.14.0\messages_zh.js" />
+    <None Include="wwwroot\admin\lib\jquery.validation\1.14.0\validate-methods.js" />
+    <None Include="wwwroot\admin\lib\jquery\1.9.1\jquery.js" />
+    <None Include="wwwroot\admin\lib\jquery\1.9.1\jquery.min.js" />
+    <None Include="wwwroot\admin\lib\jselect-1.0.js" />
+    <None Include="wwwroot\admin\lib\layer\2.4\layer.js" />
+    <None Include="wwwroot\admin\lib\laypage\1.2\laypage.js" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.js" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.min.js" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.min.map" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox.js" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox.min.js" />
+    <None Include="wwwroot\admin\lib\lightbox2\2.8.1\js\lightbox.min.map" />
+    <None Include="wwwroot\admin\lib\My97DatePicker\4.8\calendar.js" />
+    <None Include="wwwroot\admin\lib\My97DatePicker\4.8\lang\en.js" />
+    <None Include="wwwroot\admin\lib\My97DatePicker\4.8\lang\zh-cn.js" />
+    <None Include="wwwroot\admin\lib\My97DatePicker\4.8\lang\zh-tw.js" />
+    <None Include="wwwroot\admin\lib\My97DatePicker\4.8\WdatePicker.js" />
+    <None Include="wwwroot\admin\lib\nprogress\0.2.0\nprogress.js" />
+    <None Include="wwwroot\admin\lib\nprogress\0.2.0\nprogress.min.js" />
+    <None Include="wwwroot\admin\lib\respond.min.js" />
+    <None Include="wwwroot\admin\lib\squid.js" />
+    <None Include="wwwroot\admin\lib\swfobject.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\attachment\attachment.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\background\background.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\charts\chart.config.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\charts\charts.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\emotion\emotion.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\help\help.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\image\image.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\internal.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\music\music.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\scrawl\scrawl.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\searchreplace\searchreplace.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\spechars\spechars.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\table\edittable.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\template\config.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\template\template.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\video\video.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\wordimage\imageUploader.swf" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\wordimage\tangram.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\dialogs\wordimage\wordimage.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\lang\en\en.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\lang\zh-cn\zh-cn.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\codemirror\codemirror.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\mootools-adapter.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\prototype-adapter.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\standalone-framework.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\highcharts-more.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\highcharts-more.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\highcharts.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\highcharts.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\annotations.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\annotations.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\canvas-tools.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\canvas-tools.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\data.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\data.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\drilldown.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\drilldown.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\exporting.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\exporting.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\funnel.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\funnel.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\heatmap.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\heatmap.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\map.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\map.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\no-data-to-display.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\themes\dark-blue.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\themes\dark-green.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\themes\gray.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\themes\grid.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\highcharts\themes\skies.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\jquery-1.10.2.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\jquery-1.10.2.min.map" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\SyntaxHighlighter\shCore.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\video-js\font\vjs.svg" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\video-js\video-js.swf" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\video-js\video.dev.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\video-js\video.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\Uploader.swf" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.custom.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.custom.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.flashonly.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.flashonly.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.html5only.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.html5only.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.withoutimage.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.all.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.all.min.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.config.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.parse.js" />
+    <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.parse.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\cropper\cropper.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\cropper\uploader.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\expressInstall.swf" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\image-upload\upload.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\images\icons.psd" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\images\progress.psd" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\script.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\README.md" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\requirejs\app.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\requirejs\require.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\Uploader.swf" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.custom.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.custom.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.fis.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.flashonly.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.flashonly.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.html5only.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.html5only.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.noimage.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.noimage.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.nolog.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.nolog.min.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.withoutimage.js" />
+    <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.withoutimage.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\api\apiCss\api.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\api\apiCss\jquery-1.6.2.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\api\apiCss\jquery.ztree.core-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.all-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.all-3.5.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.core-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.core-3.5.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.excheck-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.excheck-3.5.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.exedit-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.exedit-3.5.min.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.exedit.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.exhide-3.5.js" />
+    <None Include="wwwroot\admin\lib\zTree\v3\js\jquery.ztree.exhide-3.5.min.js" />
+    <None Include="wwwroot\admin\static\h-ui.admin\js\H-ui.admin.js" />
+    <None Include="wwwroot\admin\static\h-ui\js\H-ui.js" />
+    <None Include="wwwroot\admin\static\h-ui\js\H-ui.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\API\Info\V2\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

@@ -1,0 +1,111 @@
+﻿@using LdCms.Web.Models;
+@model SiteConfig
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["Keywords"] = Model.Keywords;
+    ViewData["Description"] = Model.Description;
+}
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header"></div>
+<div class="loginWraper">
+    <div id="loginform" class="loginBox">
+        <form id="form" name="form" class="form form-horizontal" action="@Url.Action("login",new { companyid = Model.CompanyID })" method="post">
+            <div class="row cl">
+                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+                <div class="formControls col-xs-8">
+                    <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+                <div class="formControls col-xs-8">
+                    <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="formControls col-xs-8 col-xs-offset-3">
+                    <input id="verifyCode" name="verifyCode" class="input-text size-L" type="text" placeholder="验证码" value="" style="width:150px;">
+                    <img id="verifyCodeSrc" src="@Url.Action("index","VerifyCode")">
+                    <a id="kanbuq" href="javascript:;" onclick="$.mainu.verifyCode()">看不清，换一张</a>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="formControls col-xs-8 col-xs-offset-3">
+                    <label for="online">
+                        <input type="checkbox" name="online" id="online" value="1">
+                        使我保持登录状态
+                    </label>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="formControls col-xs-8 col-xs-offset-3">
+                    <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+                    <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">Copyright by LdCms V1.0</div>
+@*
+    --------------
+    页面底部脚本
+    --------------
+*@
+@section css{
+    <link href="~/admin/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    setTimeout(function () {
+                        var code = $.cookie('VerifyCode');
+                        var url = "/verifycode/get";
+                        var data = { code: encodeURI(code) };
+                        $.get(url, data, function (data) {
+                            $("#username").val("admin");
+                            $("#password").val("admin");
+                            $('#online').attr("checked", true);
+                            $("#verifyCode").val(data);
+                        });
+                    }, 1000);
+                },
+                verifyCode: function () {
+                    var indexTime = (new Date()).getTime();
+                    var codeSrc = "/verifycode/index?s=" + indexTime;
+                    $("#verifyCodeSrc").attr({ src: codeSrc });
+                },
+                formSubmit: function () {
+                    var options = {
+                        cache: false,
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            if (XMLHttpRequest.status != 200) {
+                                layer.alert('系统忙！', { icon: 5 });
+                            }
+                        },
+                        success: function (result) {
+                            var state = result.state;
+                            var message = result.message;
+                            if (state == "success") {
+                                window.location.href = '@Url.Action("index","admin")';
+                            } else {
+                                layer.alert(message, { icon: 5 });
+                            }
+                        }
+                    };
+                    $("#form").ajaxForm(options);
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

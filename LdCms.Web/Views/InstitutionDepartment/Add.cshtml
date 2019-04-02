@@ -1,0 +1,155 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Institution_Department
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<article class="page-container">
+
+    <form action="@Url.Action("Save",new { DepartmentId = Model.DepartmentID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <div class="admin-add-top-tips">提示：所属部门不可变更类别。</div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>部门编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.DepartmentID" placeholder="" id="fDepartmentId" name="fDepartmentId" @(string.IsNullOrEmpty(Model.DepartmentID) ? "" : "disabled") />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>部门名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.DepartmentName" placeholder="" id="fDepartmentName" name="fDepartmentName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属部门：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fParentId" name="fParentId" @(string.IsNullOrEmpty(Model.DepartmentID) ? "" : "disabled")></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="fDescription" name="fDescription" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true">@Html.Raw(Model.Description)</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+
+                    $.mainu.getDepartment('@Model.ParentID');
+                },
+                getDepartment: function (parentId) {
+                    var url = "@Url.Action("list-byparentid-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { id: 0 }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="" selected>作为一级部门</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (parentId == list[i].department_id)
+                                    strOption += '<option value="' + list[i].department_id + '" selected>' + list[i].department_name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].department_id + '">' + list[i].department_name + '</option>';
+                            }
+                        }
+                        $("#fParentId").html(strOption);
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fDepartmentId: {
+                                required: true
+                            },
+                            fDepartmentName: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var strDepartmentId = $("input[name='department_id']").val();
+                            var blnState = $("input[name='state']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { str_department_id: strDepartmentId, bln_state: blnState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

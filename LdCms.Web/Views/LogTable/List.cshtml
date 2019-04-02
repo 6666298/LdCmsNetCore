@@ -1,0 +1,135 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Utility
+@using LdCms.Common.Extension
+@model IEnumerable<Ld_Log_Table>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 数据字典 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="text-c">
+        数据库表名：
+        <input type="text" class="input-text" style="width:350px" placeholder="表名" id="keyword" name="keyword" value="@ViewBag.keyword" />
+        <button type="submit" class="btn btn-success radius" id="search" name="search" onclick="$.mainu.search()"><i class="Hui-iconfont">&#xe665;</i> 查找</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="$.mainu.initTable()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe68f;</i> 重置数据表</a>
+            <a href="@Url.Action("list")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 结构数据表</a>
+        </span>
+        <span class="r">共有数据：<strong>@ViewBag.Count</strong> 条</span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox" name="" value=""></th>
+                    <th width="80">ID</th>
+                    <th width="240">表名</th>
+                    <th width="180">业务名称</th>
+                    <th width="">备注</th>
+                    <th width="120">操作时间</th>
+                    <th width="120">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td><input type="checkbox" name="id" value="@m.TableID"></td>
+                            <td>@m.TableID</td>
+                            <td class="text-l">@(Html.Raw(Utility.Highlight(m.TableName, ViewBag.keyword)))</td>
+                            <td class="text-l">@(Html.Raw(Utility.Highlight(m.BusinessName, ViewBag.keyword)))</td>
+                            <td class="text-l">@m.Remark</td>
+                            <td>@(m.CreateDate.HasValue ? m.CreateDate.Value.ToString("yyyy-MM-dd HH:mm") : "-")</td>
+                            <td class="td-manage">
+                                <a title="编辑注释" href="javascript:;" onclick="$.mainu.edit('编辑','@Url.Action("Edit", new { TableID = m.TableID })')" class="ml-5" style="text-decoration:none">编辑</a>
+                                <a title="查看字段" href="javascript:;" onclick="$.mainu.show('查看详情','@Url.Action("Details", new { TableID = m.TableID })')" class="ml-5" style="text-decoration:none">查看</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pt-30" style="width:100%; height:60px;"></div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+            (function ($) {
+                $.mainu = {
+                    init: function () {
+                        $('.table-sort').dataTable({
+                            "aaSorting": [[2, "asc"]],                     //默认第几个排序
+                            "bStateSave": true,                            //状态保存
+                            "pageLength": 100,                             //改变初始化页长度
+                            "aoColumnDefs": [
+                                {
+                                    "orderable": false, "aTargets": [0, 6] // 制定列不参与排序
+                                }
+                            ],
+                            "aLengthMenu": [10, 25, 50, 100]
+                        });
+                    },
+                    search: function () {
+                        var dateMin = $("input[name='datemin']").val();
+                        var dateMax = $("input[name='datemax']").val();
+                        var clientId = $("select[name='clientId']").val();
+                        var keyword = $("input[name='keyword']").val();
+                        if (keyword == "") {
+                            if (dateMin == "" || dateMax == "") {
+                                layer.alert('日期范围不能空', { icon: 5 });
+                                return;
+                            }
+                        }
+                        var url = "?datemin=" + dateMin + "&datemax=" + dateMax + "&clientId=" + clientId+"&keyword=" + keyword + "";
+                        window.location.href = url;
+                    },
+                    show: function (title, url) {
+                        var index = layer.open({
+                            type: 2,
+                            title: title,
+                            content: url
+                        });
+                        layer.full(index);
+                    },
+                    edit: function (title, url, w, h) {
+                        layer_show(title, url, w, h);
+                    },
+                    initTable: function () {
+                        layer.confirm('确认要重新刷新数据表吗？', function (index) {
+                            var url = "@Url.Action("InitTable")";
+                            var data = {};
+                            $.ajaxSetup({ cache: false }); 
+                            $.post(url, data, function (result) {
+                                var state = result.state;          //错误代码
+                                var message = result.message;        //错误说明
+                                if (state == "success") {
+                                    location.reload();
+                                } else {
+                                    layer.alert(message, { icon: 5 });
+                                }
+                            });
+                        });
+                    }
+                };
+                $(function () {
+                    $.mainu.init();
+                });
+            })(jQuery);
+    </script>
+}
+

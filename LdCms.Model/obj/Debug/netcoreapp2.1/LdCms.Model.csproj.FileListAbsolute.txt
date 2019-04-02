@@ -1,0 +1,27 @@
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
+H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
+H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
+H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb

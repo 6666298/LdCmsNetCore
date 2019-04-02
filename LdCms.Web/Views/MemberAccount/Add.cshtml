@@ -1,0 +1,188 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Member_Account
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="page-container">
+    <form action="@Url.Action("Save",new { MemberID = Model.MemberID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>会员等级：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fRankId" name="fRankId"></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>公司名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.CompanyName" placeholder="" id="CompanyName" name="CompanyName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>姓名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Name" placeholder="" id="fName" name="fName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>性别：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="radio-box">
+                    <input type="radio" id="sex-1" name="fSex" value="1" @(Model.Sex.ToInt() == 1 ? "checked" : "") />
+                    <label for="sex-1">男</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="sex-2" name="fSex" value="2" @(Model.Sex.ToInt() == 2 ? "checked" : "") />
+                    <label for="sex-2">女</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="sex-3" name="fSex" value="0" @(Model.Sex.ToInt() == 0 ? "checked" : "") />
+                    <label for="sex-3">保密</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>手机：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Phone" placeholder="" id="fPhone" name="fPhone" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>邮箱：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Email" placeholder="" id="fEmail" name="fEmail" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Address" placeholder="" id="fAddress" name="fAddress" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="fRemark" name="fRemark" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true">@Model.Remark</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length"></em>/100</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fRemark").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                    $.mainu.getMemberRank("@Model.RankID");
+                },
+                getMemberRank: function (rankid) {
+                    var url = "@Url.Action("rank-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">请选择会员等级</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (rankid == list[i].id)
+                                    strOption += '<option value="' + list[i].id + '" selected>' + list[i].name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].id + '">' + list[i].name + '</option>';
+                            }
+                        }
+                        $("#fRankId").html(strOption);
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fRankId: {
+                                required: true
+                            },
+                            fName: {
+                                required: true
+                            },
+                            fPhone: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fRankName = $("select[name='fRankId']").find("option:selected").text();
+                            var fState = $("input[name='fState']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fRankName: fRankName, fState: fState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;
+                                    var message = result.message;
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

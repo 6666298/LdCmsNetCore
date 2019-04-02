@@ -1,0 +1,201 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model IEnumerable<Ld_Institution_Department>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 公司管理 <span class="c-gray en">&gt;</span> 部门管理 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="text-c">
+        日期范围：
+        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" name="datemin" class="input-text Wdate" style="width:120px;" value="@ViewBag.datemin" />
+        -
+        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" name="datemax" class="input-text Wdate" style="width:120px;" value="@ViewBag.datemax" />
+        <input type="text" class="input-text" style="width:350px" placeholder="输入部门编号、名称" id="keyword" name="keyword" value="@ViewBag.keyword" />
+        <button type="submit" class="btn btn-success radius" id="search" name="search" onclick="$.mainu.search()"><i class="Hui-iconfont">&#xe665;</i> 查找</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="$.mainu.delBatch()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="@Url.Action("list")" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe667;</i> 部门列表</a>
+            <a href="javascript:;" onclick="$.mainu.add('添加部门','@Url.Action("add")','','')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新增部门</a>
+        </span>
+        <span class="r">共有数据：<strong>@ViewBag.Count</strong> 条</span>
+    </div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox" name="" value=""></th>
+                    <th width="80">部门编号</th>
+                    <th width="200">部门名称</th>
+                    <th width="">备注</th>
+                    <th width="120">加入时间</th>
+                    <th width="70">状态</th>
+                    <th width="140">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td><input type="checkbox" name="id" value="@m.DepartmentID"></td>
+                            <td>@(Html.Raw(Utility.Highlight(m.DepartmentID, ViewBag.keyword)))</td>
+                            <td class="text-l">@(Utility.StringRepeat("　", m.RankID.ToInt())) @(m.RankID.ToInt() > 1 ? "" : "")@(Html.Raw(Utility.Highlight(m.DepartmentName, ViewBag.keyword)))</td>
+                            <td class="text-l">@m.Description</td>
+                            <td>@(m.CreateDate.HasValue ? m.CreateDate.Value.ToString("yyyy-MM-dd HH:mm") : "-")</td>
+                            <td class="td-status">@(m.State.ToBool() ? Html.Raw("<span class='label label-success radius'>已启用</span>") : Html.Raw("<span class='label label-defaunt radius'>已停用</span>"))</td>
+                            <td class="td-manage">
+                                @if (m.State.ToBool())
+                                {
+                                    <a title="停用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,'@m.DepartmentID')">停用</a>
+                                }
+                                else
+                                {
+                                    <a title="启用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,'@m.DepartmentID')">启用</a>
+                                }
+                                <a title="编辑" class="ml-5" style="text-decoration:none" href="javascript:;" onclick="$.mainu.add('编辑','@Url.Action("add", new { departmentid = m.DepartmentID })','','')">编辑</a>
+                                <a title="删除" class="ml-5" style="text-decoration:none" href="javascript:;" onclick="$.mainu.del(this,'@m.DepartmentID')">删除</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript" src="~/admin/static/h-ui.admin/js/H-ui.admin.common.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.table-sort').dataTable({
+                        "ordering": false,
+                        "aaSorting": [[1, "asc"]],//默认第几个排序
+                        "bStateSave": true,//状态保存
+                        "iDisplayLength":100,
+                        "aoColumnDefs": [
+	                        { "orderable": false, "aTargets": [0, 6] }// 制定列不参与排序
+                        ]
+                    });
+                },
+                search: function () {
+                    $dateMin = $("input[name='datemin']").val();
+                    $dateMax = $("input[name='datemax']").val();
+                    $keyword = $("input[name='keyword']").val();
+                    if ($keyword == "") {
+                        if ($dateMin == "" || $dateMax == "") {
+                            layer.alert('日期范围不能空', { icon: 5 });
+                            return;
+                        }
+                    }
+                    var param = {
+                        datemin: $dateMin,
+                        datemax: $dateMax,
+                        keyword: $keyword
+                    };
+                    var url = "?" +urlEncodes(param);
+                    window.location.href = url;
+                },
+                add: function (title, url, w, h) {
+                    layer_show(title, url, w, h);
+                },
+                stop: function (obj, id) {
+                    layer.confirm('确认要停用吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { departmentid: id, state: false },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="启用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,\'' + id + '\')">启用</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                                    $(obj).remove();
+                                    layer.msg('已停用！', { icon: 5, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                start: function (obj, id) {
+                    layer.confirm('确认要启用吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("UpdateState")',
+                            data: { departmentid: id, state: true },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").find(".td-manage").prepend('<a title="停用" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,\'' + id + '\')">停用</a>');
+                                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                                    $(obj).remove();
+                                    layer.msg('已启用！', { icon: 6, time: 3000 });
+                                } else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            }
+                        });
+                    });
+                },
+                del: function (obj, id) {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("delete")',
+                            data: { departmentid: id },
+                            dataType: 'json',
+                            success: function (result) {
+                                var state = result.state;
+                                var message = result.message;
+                                if (state == "success") {
+                                    $(obj).parents("tr").remove();
+                                    layer.msg('已删除!', { icon: 1, time: 3000 });
+                                }else {
+                                    layer.msg(message, { icon: 5, time: 3000 });
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    });
+                },
+                delBatch: function () {
+                    layer.msg('不支持批量删除操作!', { icon: 5, time: 3000 });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+            });
+        })(jQuery);
+    </script>
+}
+

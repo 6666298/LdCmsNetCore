@@ -1,0 +1,167 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Info_Class
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<article class="page-container">
+
+    <form action="@Url.Action("Save",new { ClassID = Model.ClassID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <div class="admin-add-top-tips">提示：所属栏目不可变更。</div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>栏目名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.ClassName" placeholder="" id="fClassName" name="fClassName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>栏目属性：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fTypeId" name="fTypeId" @(string.IsNullOrEmpty(Model.ClassID) ? "" : "disabled")>
+                        <option value="1">单页</option>
+                        <option value="2">分类</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属栏目：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fParentId" name="fParentId" @(string.IsNullOrEmpty(Model.ClassID) ? "" : "disabled")></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>关建字：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Keyword" placeholder="" id="fKeyword" name="fKeyword" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="fDescription" name="fDescription" class="textarea" placeholder="200个字符以内" dragonfly="true">@Html.Raw(Model.Description)</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+
+                    $.mainu.getClass('@Model.ParentID');
+                },
+                getClass: function (parentId) {
+                    var url = "@Url.Action("list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { id: 0 }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="" selected>作为一级栏目</option>';
+                        if (state == "success") {
+                            var str = "　";
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                var strA = str.repeat(list[i].rank-1) + (list[i].rank == 1 ? "" : "");
+                                if (parentId == list[i].id)
+                                    strOption += '<option value="' + list[i].id + '" selected>' + strA + list[i].name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].id + '">' + strA + list[i].name + '</option>';
+                            }
+                            //var str = "Runoob";str.repeat(2);
+                            
+                        }
+                        $("#fParentId").html(strOption);
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fClassName: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fTypeName = $("select[name='fTypeId']").find("option:selected").text();
+                            var fState = $("input[name='state']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fTypeName: fTypeName, fState: fState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

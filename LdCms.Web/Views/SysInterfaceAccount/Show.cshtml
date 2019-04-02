@@ -1,0 +1,254 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.EF.DbViews
+@using LdCms.Common.Utility
+@using LdCms.Common.Extension
+@model Ld_Sys_InterfaceAccount
+
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span>接口管理<span class="c-gray en">&gt;</span>白名单设置
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+
+<article class="page-container">
+
+    <div class="l" style="width:60%;">
+        <form action="@Url.Action("SaveWhiteList",new { Account = Model.Account })" method="post" class="form form-horizontal" id="form-add">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">接口帐号：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="@Model.Account" placeholder="" id="fAccount" name="fAccount" disabled="disabled" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">UUID：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="@Model.Uuid" placeholder="" id="fUUID" name="fUUID" disabled="disabled" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">AppID：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="@Model.AppID" placeholder="接口AppID" id="fAppID" name="fAppID" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">AppSecret：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="@Model.AppSecret" placeholder="接口AppSecret" id="fAppSecret" name="fAppSecret" style="width:90%;" />
+                    <input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;重置&nbsp;&nbsp;" onclick="$.mainu.refreshAppSecret('@Model.Account')" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">AppKey：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="@Model.AppKey" placeholder="接口AppKey" id="fAppKey" name="fAppKey" style="width:90%;" />
+                    <input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;重置&nbsp;&nbsp;" onclick="$.mainu.refreshAppKey('@Model.Account')" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">备注：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <textarea id="fDescription" name="fDescription" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true">@Model.Description</textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length"></em>/100</p>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择分类：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <span class="select-box" style="width:50%;">
+                        <select class="select" size="1" id="fClassID" name="fClassID">
+                            <option value="1">WCF</option>
+                            <option value="2">WEB</option>
+                            <option value="3">API</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">接口请求IP：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="填写授权IP地址" id="fIpAddress" name="fIpAddress" />
+                    <span><font color="red">注：</font>授权IP地址才可以请求接口，无限请用“*”。</span>
+                </div>
+            </div>
+
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="l" style="width:40%;border:0px solid #ffd800;">
+        <div style="height:32px;line-height:32px;">已授权请求IP地址：</div>
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="">授权IP地址</th>
+                    <th width="80">分类</th>
+                    <th width="80">状态</th>
+                    <th width="120">时间</th>
+                    <th width="80">操作</th>
+                </tr>
+            </thead>
+            <tbody id="lists"></tbody>
+        </table>
+    </div>
+
+
+
+</article>
+
+
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript" src="~/admin/static/h-ui.admin/js/H-ui.admin.common.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                    $.mainu.getWhiteList();
+                },
+                refreshAppSecret: function (account) {
+                    var url = "@Url.Action("UpdateAppSecret")";
+                    $.ajaxSetup({ cache: false });
+                    $.post(url, {
+                        account: account,
+                    }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var appSecret = result.data.appsecret;
+                            $("#fAppSecret").val(appSecret);
+                        } else {
+                            layer.alert(message, { icon: 5 });
+                        }
+                    });
+                },
+                refreshAppKey: function (account) {
+                    var url = "@Url.Action("UpdateAppKey")";
+                    $.ajaxSetup({ cache: false });
+                    $.post(url, {
+                        account: account,
+                    }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var key = result.data.key;
+                            $("#fAppKey").val(key);
+                        } else {
+                            layer.alert(message, { icon: 5 });
+                        }
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fIpAddress: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fClassName = $('#fClassID option:selected').text();
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fClassName: fClassName, fState: true },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        layer.msg(message, { icon: 6, time: 3000 });
+                                        $.mainu.getWhiteList();
+                                    } else {
+                                        layer.msg(message, { icon: 5, time: 3000 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                },
+                getWhiteList: function () {
+                    var account = "@Model.Account";
+                    var url = "@Url.Action("white-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { account: account}, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            var sBody = "";
+                            for (var i = 0; i < result.data.length; i++) {
+                                sBody += '<tr class="text-c">';
+                                sBody += '<td class="text-c">' + result.data[i].ip + '</td>';
+                                sBody += '<td>' + result.data[i].class_name + '</td>';
+                                sBody += '<td>' + result.data[i].state + '</td>';
+                                sBody += '<td>' + result.data[i].create_date + '</td>';
+                                sBody += '<td><a href="###" onclick="$.mainu.delete(\'' + result.data[i].account + '\',\'' + result.data[i].ip + '\',\'' + result.data[i].class_id + '\')">删除</a></td>';
+                                sBody += '</tr>';
+                            }
+                            $("#lists").html(sBody);
+                        }
+                    }, "json");
+                },
+                delete: function (account,ipAddress,classId) {
+                    var url = "@Url.Action("DeleteWhiteList")";
+                    $.ajaxSetup({ cache: false });
+                    $.post(url, {
+                        account: account,
+                        ipAddress: ipAddress,
+                        classId: classId
+                    }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            $.mainu.getWhiteList();
+                        } else {
+                            layer.alert(message, { icon: 5 });
+                        }
+                    });
+                }
+
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+
+        })(jQuery);
+    </script>
+}
+

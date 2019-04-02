@@ -1,0 +1,132 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@model IEnumerable<Ld_Log_TableDetails>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-container">
+    <div class="mt-10">
+        <div class="mb-10">数据表： @ViewBag.TableName 字段明细</div>
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="240">表名</th>
+                    <th width="220">字段名称</th>
+                    <th width="260">字段注释</th>
+                    <th width="80">数据类型</th>
+                    <th width="60">主键</th>
+                    <th width="">备注</th>
+                    <th width="120">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var m in Model)
+                    {
+                        <tr class="text-c">
+                            <td>@ViewBag.TableName</td>
+                            <td class="text-l">@m.ColumnName</td>
+                            <td class="text-l">@m.ColumnText</td>
+                            <td>@m.ColumnDataType</td>
+                            <td class="td-status">@(m.IsPrimaryKey.ToBool() ? Html.Raw("<span class='label label-success radius'>是</span>") : Html.Raw("<span class='label label-defaunt radius'>否</span>"))</td>
+                            <td class="text-l">@m.Remark</td>
+                            <td class="td-manage">
+                                @if (m.IsPrimaryKey.ToBool())
+                                {
+                                <a title="删除主建" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,'@m.ID')">删除主建</a>
+                                }
+                                else
+                                {
+                                <a title="设为主建" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,'@m.ID')">设为主建</a>
+                                }
+                                <a title="编辑注释" href="javascript:;" onclick="$.mainu.edit('编辑','@Url.Action("EditDetails", new { id = m.ID })')" class="ml-5" style="text-decoration:none">编辑</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pt-30" style="width:100%; height:60px;"></div>
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+            (function ($) {
+                $.mainu = {
+                    init: function () {
+
+                    },
+                    edit: function (title, url, w, h) {
+                        layer_show(title, url, w, h);
+                    },
+                    stop: function (obj, id) {
+                        layer.confirm('确认要删除主建吗？', function (index) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("UpdatePrimaryKey")',
+                                data: { id: id, fState: false },
+                                dataType: 'json',
+                                success: function (result) {
+                                    var state = result.state;
+                                    var message = result.message;
+                                    if (state == "success") {
+                                        $(obj).parents("tr").find(".td-manage").prepend('<a title="设为主建" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.start(this,\'' + id + '\')">设为主建</a>');
+                                        $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">否</span>');
+                                        $(obj).remove();
+                                        layer.msg('删除主建！', { icon: 5, time: 3000 });
+                                    } else {
+                                        layer.msg(message, { icon: 5, time: 3000 });
+                                    }
+                                },
+                                error: function (data) {
+                                    console.log(data.msg);
+                                }
+                            });
+                        });
+                    },
+                    start: function (obj, id) {
+                        layer.confirm('确认要设为主建吗？', function (index) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("UpdatePrimaryKey")',
+                                data: { id: id, fState: true },
+                                dataType: 'json',
+                                success: function (result) {
+                                    var state = result.state;
+                                    var message = result.message;
+                                    if (state == "success") {
+                                        $(obj).parents("tr").find(".td-manage").prepend('<a title="删除主建" href="javascript:;" class="ml-5" style="text-decoration:none" onClick="$.mainu.stop(this,\'' + id + '\')">删除主建</a>');
+                                        $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">是</span>');
+                                        $(obj).remove();
+                                        layer.msg('设为主建！', { icon: 6, time: 3000 });
+                                    } else {
+                                        layer.msg(message, { icon: 5, time: 3000 });
+                                    }
+                                },
+                                error: function (data) {
+                                    console.log(data.msg);
+                                }
+                            });
+                        });
+                    }
+                };
+                $(function () {
+                    $.mainu.init();
+                });
+            })(jQuery);
+    </script>
+}
+

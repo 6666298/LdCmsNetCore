@@ -1,0 +1,193 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Extend_Link
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="page-container">
+    <form action="@Url.Action("Save",new { LinkID = Model.LinkID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属分组：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <span class="select-box">
+                    <select class="select" size="1" id="fGroupId" name="fGroupId"></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站名称：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <input type="text" class="input-text" value="@Model.Name" placeholder="请输入网站名称" id="fName" name="fName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站LOGO：</label>
+            <div class="formControls col-xs-8 col-sm-6">
+                <input type="text" class="input-text" value="@Model.Logo" placeholder="请上传网站LOGO" id="fLogo" name="fLogo" />
+            </div>
+            <div id="picker" class="formControls col-xs-8 col-sm-2" style="padding-left:0px;">选择文件</div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网址：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <input type="text" class="input-text" value="@Model.Url" placeholder="请输入访问网址。格式：http://开头" id="fUrl" name="fUrl" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>排序：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                <input type="text" class="input-text" value="@Model.Sort" placeholder="请输入排序号，只能为数字。越小越靠前" id="fSort" name="fSort" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" checked="checked" />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section css{
+    <link href="~/admin/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript" src="~/admin/lib/webuploader/0.1.5/webuploader.min.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 200
+                    });
+                    $.mainu.getLinkGruop("@Model.GroupID");
+                },
+                getLinkGruop: function (id) {
+                    var url = "@Url.Action("linkGroup-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">选择分组</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (id == list[i].id)
+                                    strOption += '<option value="' + list[i].id + '" selected>' + list[i].name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].id + '">' + list[i].name + '</option>';
+                            }
+                        }
+                        $("#fGroupId").html(strOption);
+                    });
+                },
+                webUploaderInit: function () {
+                    var uploader = WebUploader.create({
+                        auto: true,
+                        swf: '~/admin/lib/webuploader/0.1.5/Uploader.swf',
+                        server: '@Url.Action("File", "Upload")',
+                        pick: {
+                            id: '#picker',
+                            multiple: false,
+                        },
+                        resize: false,
+                        accept: {
+                            title: 'Images',
+                            extensions: 'gif,jpg,jpeg,bmp,png',
+                            mimeTypes: 'image/*'
+                        }
+                    });
+                    uploader.on('uploadSuccess', function (file, json) {
+                        var message = "上传成功！";
+                        var imageSrc = json.data.file.src;
+                        $("#fLogo").val(imageSrc);
+                        layer.msg(message, { icon: 6 });
+                    });
+                    uploader.on('uploadError', function (file, json) {
+                        var message = "上传出错！";
+                        layer.msg(message, { icon: 5 });
+                    });
+                    uploader.on('uploadComplete', function (file) {
+                        
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fGroupId: {
+                                required: true
+                            },
+                            fName: {
+                                required: true
+                            },
+                            fUrl: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fState = $("input[name='fState']").is(':checked');
+                            var fGroupName = $("select[name='fGroupId']").find("option:selected").text();
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fState: fState, fGroupName: fGroupName },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.webUploaderInit();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

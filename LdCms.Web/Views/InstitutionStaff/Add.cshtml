@@ -1,0 +1,242 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.Common.Extension
+@using LdCms.Common.Utility
+@model Ld_Institution_Staff
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="page-container">
+    <form action="@Url.Action("Save",new { StaffId = Model.StaffID })" method="post" class="form form-horizontal" id="form-add">
+        <div class="row cl">
+            <div class="admin-add-top-tips">提示：员工初始化密码为手机后8位组成。</div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>员工工号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.StaffID" placeholder="" id="fStaffID" name="fStaffID" @(string.IsNullOrEmpty(Model.StaffID) ? "" : "disabled") />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>员工姓名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.StaffName" placeholder="" id="fStaffName" name="fStaffName" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>性别：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="radio-box">
+                    <input type="radio" id="sex-1" name="fSex" value="1" @(Model.Sex.ToInt() == 1 ? "checked" : "") />
+                    <label for="sex-1">男</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="sex-2" name="fSex" value="2" @(Model.Sex.ToInt() == 2 ? "checked" : "") />
+                    <label for="sex-2">女</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="sex-3" name="fSex" value="0" @(Model.Sex.ToInt() == 0 ? "checked" : "") />
+                    <label for="sex-3">保密</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>担任职位：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fPositionId" name="fPositionId"></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属部门：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fDepartmentId" name="fDepartmentId"></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属网点：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select" size="1" id="fStoreId" name="fStoreId"></select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系手机：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Phone" placeholder="" id="fPhone" name="fPhone" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系邮箱：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Email" placeholder="" id="fEmail" name="fEmail" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="@Model.Address" placeholder="" id="fAddress" name="fAddress" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="fDescription" name="fDescription" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true">@Html.Raw(Model.Description)</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">审核：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="fState" name="fState" value="1" @(Model.State.ToBool() ? "checked" : "") />
+                    <label for="checkbox-1">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fDescription").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                    $.mainu.getPosition('@Model.PositionID');
+                    $.mainu.getStore('@Model.StoreID');
+                    $.mainu.getDepartment('@Model.DepartmentID');
+                },
+                getPosition: function (setPositionId) {
+                    var url = "@Url.Action("position-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">请选择担任职位</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (setPositionId == list[i].position_id)
+                                    strOption += '<option value="' + list[i].position_id + '" selected>' + list[i].position_name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].position_id + '">' + list[i].position_name + '</option>';
+                            }
+                        }
+                        $("#fPositionId").html(strOption);
+                    });
+                },
+                getStore: function (setStoreId) {
+                    var url = "@Url.Action("store-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">请选择所属网点</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (setStoreId == list[i].store_id)
+                                    strOption += '<option value="' + list[i].store_id + '" selected>' + list[i].store_name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].store_id + '">' + list[i].store_name + '</option>';
+                            }
+                        }
+                        $("#fStoreId").html(strOption);
+                    });
+                },
+                getDepartment: function (setDepartmentId) {
+                    var url = "@Url.Action("department-list-get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { id: 0 }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var strOption = '<option value="">请选择所属部门</option>';
+                        if (state == "success") {
+                            var list = result.data;
+                            for (var i = 0; i < list.length; i++) {
+                                if (setDepartmentId == list[i].department_id)
+                                    strOption += '<option value="' + list[i].department_id + '" selected>' + list[i].space + list[i].level_symbol + list[i].department_name + '</option>';
+                                else
+                                    strOption += '<option value="' + list[i].department_id + '">' + list[i].space + list[i].level_symbol + list[i].department_name + '</option>';
+                            }
+                        }
+                        $("#fDepartmentId").html(strOption);
+                    });
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fStaffId: {
+                                required: true
+                            },
+                            fStaffName: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fState = $("input[name='fState']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fState: fState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        var index = parent.layer.getFrameIndex(window.name);
+                                        parent.location.reload();
+                                        parent.layer.close(index);
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

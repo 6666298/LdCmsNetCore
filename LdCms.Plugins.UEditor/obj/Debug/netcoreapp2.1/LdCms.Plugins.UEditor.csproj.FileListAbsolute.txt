@@ -1,0 +1,48 @@
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditorNetCore\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb

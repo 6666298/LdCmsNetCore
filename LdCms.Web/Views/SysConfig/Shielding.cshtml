@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Shielding";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span>
+    系统管理
+    <span class="c-gray en">&gt;</span>
+    基本设置
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+    <form action="@Url.Action("UpdateShielding")" class="form form-horizontal" id="form-add" method="post">
+        <div>
+            <textarea id="shielding" name="shielding" class="textarea" style="width:98%; height:300px; resize:none">@ViewBag.Shielding</textarea>
+        </div>
+        <div class="mt-20 text-c">
+            <button name="system-base-save" id="system-base-save" class="btn btn-primary radius" type="submit"><i class="icon-ok"></i> 保存 </button>
+        </div>
+    </form>
+</div>
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            shielding: {
+                                required: true,
+                                minlength: 2,
+                                maxlength: 1000
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;          //错误代码
+                                    var message = result.message;        //错误说明
+                                    if (state == "success") {
+                                        layer.msg(message, { icon: 1, time: 3000 });
+                                    } else {
+                                        layer.alert(message, { icon: 5 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+        })(jQuery);
+    </script>
+}
+

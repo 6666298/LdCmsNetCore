@@ -1,0 +1,64 @@
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
+I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
+H:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
+G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
+H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb

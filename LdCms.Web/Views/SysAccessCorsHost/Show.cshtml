@@ -1,0 +1,188 @@
+﻿@using LdCms.EF.DbModels
+@using LdCms.EF.DbViews
+@using LdCms.Common.Utility
+@using LdCms.Common.Extension
+@model Ld_Sys_AccessCorsHost
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span>接口管理<span class="c-gray en">&gt;</span>接口设置
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+
+<article class="page-container">
+
+    <div class="l" style="width:60%;">
+        <form action="@Url.Action("Save")" method="post" class="form form-horizontal" id="form-add">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">访问网址：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="允午访问网址" id="fWebHost" name="fWebHost" />
+                    <span><font color="red">注：</font>授权网址必须是“http://”开头，结尾不要“/”。</span>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">备注：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <textarea id="fRemark" name="fRemark" class="textarea" placeholder="说点什么...100个字符以内" dragonfly="true"></textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length"></em>/100</p>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">审核：</label>
+                <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                    <div class="check-box">
+                        <input type="checkbox" id="fState" name="fState" value="1" checked="checked" />
+                        <label for="checkbox-1">&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="l" style="width:40%;border:0px solid #ffd800;">
+        <div style="height:32px;line-height:32px;">已授权访问网址：</div>
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr class="text-c">
+                    <th width="">授权网址</th>
+                    <th width="80">状态</th>
+                    <th width="120">时间</th>
+                    <th width="80">操作</th>
+                </tr>
+            </thead>
+            <tbody id="lists">
+                <tr class="text-c">
+                    <td valign="top" colspan="4" class="dataTables_empty">没有数据</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</article>
+
+
+
+@*
+    --------------
+    页面底部JS脚本
+    --------------
+*@
+@section scripts{
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <script type="text/javascript" src="~/admin/static/h-ui.admin/js/H-ui.admin.common.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.mainu = {
+                init: function () {
+                    $('.skin-minimal input').iCheck({
+                        checkboxClass: 'icheckbox-blue',
+                        radioClass: 'iradio-blue',
+                        increaseArea: '20%'
+                    });
+                    $("#fRemark").Huitextarealength({
+                        minlength: 4,
+                        maxlength: 100
+                    });
+                    $.mainu.getAccessCorsHostList();
+                },
+                formSubmit: function () {
+                    $("#form-add").validate({
+                        rules: {
+                            fWebHost: {
+                                required: true
+                            }
+                        },
+                        onkeyup: false,
+                        focusCleanup: true,
+                        success: "valid",
+                        submitHandler: function (form) {
+                            var fState = $("input[name='fState']").is(':checked');
+                            $(form).ajaxSubmit({
+                                type: "POST",
+                                cache: false,
+                                data: { fState: fState },
+                                dataType: "json",
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    if (XMLHttpRequest.status != 200) {
+                                        layer.alert("POST[FAIL]", { icon: 5 });
+                                    }
+                                },
+                                success: function (result) {
+                                    var state = result.state;
+                                    var message = result.message;
+                                    if (state == "success") {
+                                        layer.msg(message, { icon: 6, time: 3000 });
+                                        $.mainu.getAccessCorsHostList();
+                                    } else {
+                                        layer.msg(message, { icon: 5, time: 3000 });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                },
+                getAccessCorsHostList: function () {
+                    var url = "@Url.Action("AccessCorsHost-List-Get")";
+                    $.ajaxSetup({ cache: false });
+                    $.get(url, { state: true}, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        var sBody = "";
+                        if (state == "success") {
+                            var total = result.data.length;
+                            console.log(total);
+                            if (total == 0) {
+                                sBody += '<tr class="text-c">';
+                                sBody += '<td valign="top" colspan="4" class="dataTables_empty">没有数据</td>';
+                                sBody += '</tr>';
+                            } else {
+                                for (var i = 0; i < total; i++) {
+                                    sBody += '<tr class="text-c">';
+                                    sBody += '<td class="text-l">' + result.data[i].web_host + '</td>';
+                                    sBody += '<td>' + result.data[i].state + '</td>';
+                                    sBody += '<td>' + result.data[i].create_date + '</td>';
+                                    sBody += '<td><a href="###" onclick="$.mainu.delete(\'' + result.data[i].web_host + '\')">删除</a></td>';
+                                    sBody += '</tr>';
+                                }
+                            }
+                        }
+                        $("#lists").html(sBody);
+                    }, "json");
+                },
+                delete: function (webHost) {
+                    var url = "@Url.Action("Delete")";
+                    $.ajaxSetup({ cache: false });
+                    $.post(url, { webHost: webHost, }, function (result) {
+                        var state = result.state;
+                        var message = result.message;
+                        if (state == "success") {
+                            $.mainu.getAccessCorsHostList();
+                        } else {
+                            layer.alert(message, { icon: 5 });
+                        }
+                    });
+                }
+            };
+            $(function () {
+                $.mainu.init();
+                $.mainu.formSubmit();
+            });
+
+        })(jQuery);
+    </script>
+}
+
