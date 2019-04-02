@@ -1,7 +1,7 @@
-# LdCmsNetCore
+# LdCms.NetCore
 
 #### 介绍
-LdCmsNetCore 是使用NetCore2.1开发一个轻量级的网站信息管理系统。正在开发中...
+LdCms.NetCore 是使用NetCore2.1开发一个轻量级的网站信息管理系统。正在开发中...
 
 > 注意：正在开发中，不建议直接使用.
 
