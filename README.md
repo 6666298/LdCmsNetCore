@@ -3,6 +3,8 @@
 #### 介绍
 LdCms.NetCore 是使用NetCore2.1开发一个轻量级的网站信息管理系统。正在开发中...
 
+测试地址：[http://cms.ldcms.net/admin/login?companyid=300001](http://cms.ldcms.net/admin/login?companyid=300001)
+
 #### 软件架构
 软件架构说明
 
