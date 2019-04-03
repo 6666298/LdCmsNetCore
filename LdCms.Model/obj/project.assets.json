@@ -520,7 +520,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
+      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\代码服务器\\GIT\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
+      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
       "projectName": "LdCms.Model",
-      "projectPath": "F:\\代码服务器\\GIT\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
+      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\代码服务器\\GIT\\LdCmsNetCore\\LdCms.Model\\obj\\",
+      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
