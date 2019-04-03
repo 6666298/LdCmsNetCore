@@ -58,7 +58,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <script type="text/plain" id="fContent" name="fContent" style="width:100%;height:500px;">
+                <script type="text/plain" id="fContent" name="fContent" style="width:100%;height:550px;">
                     @(Html.Raw(Utility.ContentDecode(Model.Content)))
                 </script>
             </div>
@@ -78,6 +78,7 @@
             </div>
         </div>
     </form>
+    <div class="mb-50"></div>
 </div>
 @*
     --------------
@@ -119,7 +120,7 @@
                 ueditorInit: function () {
                     var ue = UE.getEditor('fContent');
                     ue.ready(function () {
-                        ue.setHeight(300);
+                        ue.setHeight(550);
                     });
                 },
                 initImageArray: function () {

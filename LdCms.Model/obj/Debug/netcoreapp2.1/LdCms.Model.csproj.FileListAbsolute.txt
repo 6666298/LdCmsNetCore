@@ -16,21 +16,3 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\ne
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
-H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
-H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
-H:\Git\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
-H:\Git\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb

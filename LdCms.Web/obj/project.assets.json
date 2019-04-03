@@ -13047,11 +13047,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.Web\\LdCms.Web.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Web\\LdCms.Web.csproj",
       "projectName": "LdCms.Web",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Web\\LdCms.Web.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Web\\LdCms.Web.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.Web\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13070,20 +13070,20 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "H:\\Git\\LdCmsNetCore\\LdCms.BLL\\LdCms.BLL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.BLL\\LdCms.BLL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.BLL\\LdCms.BLL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.BLL\\LdCms.BLL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.Common\\LdCms.Common.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Common\\LdCms.Common.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Common\\LdCms.Common.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Common\\LdCms.Common.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj"
             }
           }
         }

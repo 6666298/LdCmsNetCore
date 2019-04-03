@@ -46,35 +46,3 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\net
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
-H:\Git\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
-H:\Git\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.deps.json
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csprojAssemblyReference.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CoreCompileInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfoInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.AssemblyInfo.cs
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.csproj.CopyComplete
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.IDAL\obj\Debug\netcoreapp2.1\LdCms.IDAL.pdb

@@ -212,7 +212,7 @@ namespace LdCms.Web.Models
         }
         public static class 栏目管理
         {
-            public enum 分类栏目
+            public enum 栏目分类
             {
                 列表 = 110101,
                 查看 = 110102,

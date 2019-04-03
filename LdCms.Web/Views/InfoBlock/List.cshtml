@@ -7,7 +7,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 栏目管理 <span class="c-gray en">&gt;</span> 区块管理 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 内容管理 <span class="c-gray en">&gt;</span> 区块管理 <span class="c-gray en">&gt;</span> 列表
+    <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
 <div class="page-container">
     <div class="text-c"></div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
@@ -24,7 +27,7 @@
                     <th width="25"><input type="checkbox" name="" value=""></th>
                     <th width="100">编号</th>
                     <th width="">标题</th>
-                    <th width="280">标签</th>
+                    <th width="180">标签</th>
                     <th width="70">状态</th>
                     <th width="120">修改时间</th>
                     <th width="100">操作</th>
@@ -39,7 +42,7 @@
                             <td><input type="checkbox" name="id" value="@m.BlockID"></td>
                             <td>@m.BlockID</td>
                             <td class="text-l">@m.Title</td>
-                            <td>@m.Tags</td>
+                            <td class="text-l">@m.Tags</td>
                             <td class="td-status">@(m.State.ToBool() ? Html.Raw("<span class='label label-success radius'>已启用</span>") : Html.Raw("<span class='label label-defaunt radius'>已停用</span>"))</td>
                             <td>@(m.CreateDate.HasValue ? m.CreateDate.Value.ToString("yyyy-MM-dd HH:mm") : "-")</td>
                             <td class="td-manage">

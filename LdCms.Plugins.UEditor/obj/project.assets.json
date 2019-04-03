@@ -1106,11 +1106,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj",
       "projectName": "LdCms.Plugins.UEditor",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Plugins.UEditor\\LdCms.Plugins.UEditor.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.Plugins.UEditor\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Plugins.UEditor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

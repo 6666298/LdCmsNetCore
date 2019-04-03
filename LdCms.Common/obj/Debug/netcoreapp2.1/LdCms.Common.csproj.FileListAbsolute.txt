@@ -48,31 +48,3 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\n
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csprojAssemblyReference.cache
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.deps.json
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.dll
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.dll
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
-H:\Git\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.xml
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csprojAssemblyReference.cache
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CoreCompileInputs.cache
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfoInputs.cache
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfo.cs
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CopyComplete
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.dll
-H:\Git\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.deps.json
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.xml
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csprojAssemblyReference.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CoreCompileInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfoInputs.cache
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfo.cs
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CopyComplete
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.dll
-F:\代码服务器\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.pdb

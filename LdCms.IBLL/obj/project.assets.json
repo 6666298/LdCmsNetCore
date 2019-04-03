@@ -5532,11 +5532,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj",
       "projectName": "LdCms.IBLL",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5555,11 +5555,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "H:\\Git\\LdCmsNetCore\\LdCms.EF\\LdCms.EF.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.EF\\LdCms.EF.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.EF\\LdCms.EF.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.EF\\LdCms.EF.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj"
             }
           }
         }

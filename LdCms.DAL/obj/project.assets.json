@@ -5588,11 +5588,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj",
       "projectName": "LdCms.DAL",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5611,14 +5611,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "H:\\Git\\LdCmsNetCore\\LdCms.Common\\LdCms.Common.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Common\\LdCms.Common.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Common\\LdCms.Common.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Common\\LdCms.Common.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.EF\\LdCms.EF.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.EF\\LdCms.EF.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.EF\\LdCms.EF.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.EF\\LdCms.EF.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.IDAL\\LdCms.IDAL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.IDAL\\LdCms.IDAL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IDAL\\LdCms.IDAL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IDAL\\LdCms.IDAL.csproj"
             }
           }
         }

@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj",
       "projectName": "LdCms.Model",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

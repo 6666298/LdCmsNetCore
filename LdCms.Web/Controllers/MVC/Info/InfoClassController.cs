@@ -32,7 +32,7 @@ namespace LdCms.Web.Controllers.MVC.Info
         {
             try
             {
-                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.列表);
+                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.列表);
                 if (!IsPermission(funcId)) { return ToPermission(funcId); }
                     
                 List<Ld_Info_Class> result = ClassService.GetClassAll(SystemID, CompanyID);
@@ -115,7 +115,7 @@ namespace LdCms.Web.Controllers.MVC.Info
         {
             try
             {
-                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.审核);
+                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.审核);
                 if (!IsPermission(funcId)) { return Error("您没有操作权限，请联系系统管理员！"); }
                 var result = ClassService.UpdateClassState(SystemID, CompanyID, classId, state);
                 if (result)
@@ -133,7 +133,7 @@ namespace LdCms.Web.Controllers.MVC.Info
         {
             try
             {
-                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.删除);
+                string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.删除);
                 if (!IsPermission(funcId)) { return Error("您没有操作权限，请联系系统管理员！"); }
 
                 var result = ClassService.DeleteClass(SystemID, CompanyID, classId);
@@ -180,12 +180,12 @@ namespace LdCms.Web.Controllers.MVC.Info
 
                 if (string.IsNullOrWhiteSpace(classId))
                 {
-                    string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.新增);
+                    string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.新增);
                     return IsPermission(funcId) ? true : false;
                 }
                 else
                 {
-                    string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.编辑);
+                    string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.编辑);
                     return IsPermission(funcId) ? true : false;
                 }
             }
@@ -200,12 +200,12 @@ namespace LdCms.Web.Controllers.MVC.Info
             {
                 if (string.IsNullOrWhiteSpace(classId))
                 {
-                    funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.新增);
+                    funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.新增);
                     return IsPermission(funcId) ? true : false;
                 }
                 else
                 {
-                    funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.分类栏目.编辑);
+                    funcId = PermissionEnum.CodeFormat((int)PermissionEnum.栏目管理.栏目分类.编辑);
                     return IsPermission(funcId) ? true : false;
                 }
             }

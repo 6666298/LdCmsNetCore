@@ -5582,11 +5582,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Git\\LdCmsNetCore\\LdCms.BLL\\LdCms.BLL.csproj",
+      "projectUniqueName": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.BLL\\LdCms.BLL.csproj",
       "projectName": "LdCms.BLL",
-      "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.BLL\\LdCms.BLL.csproj",
+      "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.BLL\\LdCms.BLL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "H:\\Git\\LdCmsNetCore\\LdCms.BLL\\obj\\",
+      "outputPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5605,17 +5605,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.DAL\\LdCms.DAL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.DAL\\LdCms.DAL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.IBLL\\LdCms.IBLL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IBLL\\LdCms.IBLL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.IDAL\\LdCms.IDAL.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.IDAL\\LdCms.IDAL.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IDAL\\LdCms.IDAL.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.IDAL\\LdCms.IDAL.csproj"
             },
-            "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj": {
-              "projectPath": "H:\\Git\\LdCmsNetCore\\LdCms.Model\\LdCms.Model.csproj"
+            "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj": {
+              "projectPath": "I:\\蓝点管理信息系统-开源版ASP.NET CORE\\LdCms\\LdCms.Model\\LdCms.Model.csproj"
             }
           }
         }
