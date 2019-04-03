@@ -46,3 +46,15 @@ H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.
 H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
 H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
 H:\Git\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+F:\代码服务器\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
