@@ -68,3 +68,27 @@ I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.BLL\bin\Debug\netc
 I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Model.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.BLL.deps.json
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.BLL.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.BLL.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.DAL.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.IBLL.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.DAL.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.IBLL.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+F:\GIT\LdCmsNetCore\LdCms.BLL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.dll
+F:\GIT\LdCmsNetCore\LdCms.BLL\obj\Debug\netcoreapp2.1\LdCms.BLL.pdb

@@ -58,3 +58,23 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.DAL\obj\Debug\netc
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.csproj.CopyComplete
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.pdb
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.DAL.deps.json
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.DAL.runtimeconfig.json
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.DAL.runtimeconfig.dev.json
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.DAL.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.DAL.pdb
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\LdCms.IDAL.pdb
+F:\GIT\LdCmsNetCore\LdCms.DAL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.dll
+F:\GIT\LdCmsNetCore\LdCms.DAL\obj\Debug\netcoreapp2.1\LdCms.DAL.pdb

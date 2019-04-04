@@ -50,3 +50,21 @@ I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IBLL\bin\Debug\net
 I:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Model.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.IBLL.deps.json
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.IBLL.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.IBLL.pdb
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.IBLL\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.dll
+F:\GIT\LdCmsNetCore\LdCms.IBLL\obj\Debug\netcoreapp2.1\LdCms.IBLL.pdb

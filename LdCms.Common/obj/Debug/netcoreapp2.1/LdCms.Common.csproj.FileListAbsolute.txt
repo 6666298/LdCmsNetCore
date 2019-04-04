@@ -48,3 +48,17 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\n
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.deps.json
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.dll
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.Common\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.xml
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.Common\obj\Debug\netcoreapp2.1\LdCms.Common.pdb

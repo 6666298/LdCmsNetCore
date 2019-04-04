@@ -16,3 +16,11 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\ne
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.deps.json
+F:\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.dll
+F:\GIT\LdCmsNetCore\LdCms.Model\bin\Debug\netcoreapp2.1\LdCms.Model.pdb
+F:\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.dll
+F:\GIT\LdCmsNetCore\LdCms.Model\obj\Debug\netcoreapp2.1\LdCms.Model.pdb

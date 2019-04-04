@@ -34,3 +34,15 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\ob
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.deps.json
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.Abstractions.xml
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.UEditor\obj\Debug\netcoreapp2.1\LdCms.Plugins.UEditor.pdb

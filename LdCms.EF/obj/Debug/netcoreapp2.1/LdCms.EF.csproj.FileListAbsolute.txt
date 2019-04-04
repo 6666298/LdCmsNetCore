@@ -57,3 +57,19 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.EF\obj\Debug\netco
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.csproj.CopyComplete
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.pdb
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.EF.deps.json
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.EF.runtimeconfig.json
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.EF.runtimeconfig.dev.json
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.EF.dll
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.EF.pdb
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.EF\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.dll
+F:\GIT\LdCmsNetCore\LdCms.EF\obj\Debug\netcoreapp2.1\LdCms.EF.pdb

@@ -30,3 +30,19 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.WeChat\obj
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.csproj.CopyComplete
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.dll
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.pdb
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.deps.json
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.pdb
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\LdCms.Common.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\LdCms.Common.pdb
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Json.xml
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\bin\Debug\netcoreapp2.1\Microsoft.Extensions.DependencyInjection.xml
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.csprojAssemblyReference.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.csproj.CoreCompileInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.AssemblyInfoInputs.cache
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.AssemblyInfo.cs
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.csproj.CopyComplete
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.dll
+F:\GIT\LdCmsNetCore\LdCms.Plugins.WeChat\obj\Debug\netcoreapp2.1\LdCms.Plugins.WeChat.pdb
