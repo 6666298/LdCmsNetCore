@@ -1,9 +1,11 @@
 # LdCms.NetCore
 
 #### 系统介绍
-LdCms.NetCore 是使用NetCore2.1开发一个轻量级的网站信息管理系统。正在开发中...
+LdCms.NetCore 是使用NetCore2.1开发一个轻量级的网站信息管理系统。
 
-> 注意：正在开发中，不建议直接使用.
+管理后台UI使用：H-ui.admin。UI官网：http://www.h-ui.net/
+
+> 注意：正在开发中，不建议直接使用，近期会一直更新、完善。请多多关注。谢谢！
 
 #### QQ群：672575385
 
