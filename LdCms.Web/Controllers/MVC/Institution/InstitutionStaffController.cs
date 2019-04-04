@@ -36,8 +36,6 @@ namespace LdCms.Web.Controllers.MVC.Institution
         {
             return View();
         }
-
-        [HttpGet]
         public IActionResult List()
         {
             try
@@ -75,14 +73,12 @@ namespace LdCms.Web.Controllers.MVC.Institution
                 return ToError(ex.Message);
             }
         }
-        [HttpGet]
         public IActionResult Add(string staffId = "")
         {
             try
             {
-                string funcId = "";
-                if (!IsAddPermission(staffId, out funcId))
-                    return ToPermission(funcId);
+                string funcId = string.Empty;
+                if (!IsAddPermission(staffId, out funcId)) { return ToPermission(funcId); }
                 var entity = StaffService.GetStaffPro(SystemID, CompanyID, staffId);
                 if (entity == null)
                     return View(new Ld_Institution_Staff());
@@ -93,7 +89,6 @@ namespace LdCms.Web.Controllers.MVC.Institution
                 return ToError(ex.Message);
             }
         }
-        [HttpGet]
         public IActionResult UpdatePassword(string staffId)
         {
             try
@@ -305,8 +300,8 @@ namespace LdCms.Web.Controllers.MVC.Institution
                                department_id = m.DepartmentID,
                                department_name = m.DepartmentName,
                                level = m.RankID,
-                               space = Utility.StringRepeat("　", m.RankID.ToInt()),
-                               level_symbol = m.RankID.ToInt() > 1 ? "┣" : " "
+                               space = Utility.StringRepeat("　", m.RankID.ToInt() - 1),
+                               level_symbol = m.RankID.ToInt() > 1 ? "" : ""
                            };
                 return Success("ok", data);
             }
@@ -334,13 +329,16 @@ namespace LdCms.Web.Controllers.MVC.Institution
                 string fDescription = GetFormValue("fDescription");
                 string fState = GetFormValue("fState");
 
+                if (string.IsNullOrWhiteSpace(fStaffId))
+                    throw new Exception("员工工号不能为空！");
+                if (string.IsNullOrWhiteSpace(fStaffName))
+                    throw new Exception("员工姓名不能为空！");
                 if (fPhone.Length != 11)
                     throw new Exception("手机号码长度错误！");
                 if (!Utility.IsMobilePhone(fPhone))
                     throw new Exception("手机号码格式错误！");
 
                 string password = AlgorithmHelper.MD5(Utility.Right(fPhone, 8)).ToLower();
-
                 var entity = new Ld_Institution_Staff()
                 {
                     SystemID = SystemID,
@@ -387,11 +385,12 @@ namespace LdCms.Web.Controllers.MVC.Institution
                 string fDescription = GetFormValue("fDescription");
                 string fState = GetFormValue("fState");
 
+                if (string.IsNullOrWhiteSpace(fStaffName))
+                    throw new Exception("员工姓名不能为空！");
                 if (fPhone.Length != 11)
                     throw new Exception("手机号码长度错误！");
                 if (!Utility.IsMobilePhone(fPhone))
                     throw new Exception("手机号码格式错误！");
-
                 var entity = StaffService.GetStaffPro(SystemID, CompanyID, staffId);
                 if (entity == null)
                     throw new Exception("员工工号不存在！");

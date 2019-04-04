@@ -75,13 +75,13 @@
                         $('.table-sort').dataTable({
                             "aaSorting": [[2, "asc"]],                     //默认第几个排序
                             "bStateSave": true,                            //状态保存
-                            "pageLength": 100,                             //改变初始化页长度
+                            "pageLength": 10,                             //改变初始化页长度
                             "aoColumnDefs": [
                                 {
                                     "orderable": false, "aTargets": [0, 6] // 制定列不参与排序
                                 }
                             ],
-                            "aLengthMenu": [10, 25, 50, 100]
+                            "aLengthMenu": [10, 25, 50, 100, 200]
                         });
                     },
                     search: function () {

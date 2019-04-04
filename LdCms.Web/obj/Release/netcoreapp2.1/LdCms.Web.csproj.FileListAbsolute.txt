@@ -210,7 +210,6 @@ G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\ne
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\Razor\Views\SysRole\Add.g.cshtml.cs
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\Razor\Views\SysRole\Edit.g.cshtml.cs
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\Razor\Views\SysRole\List.g.cshtml.cs
-G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\Razor\Views\Token\Index.g.cshtml.cs
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\LdCms.Web.RazorTargetAssemblyInfo.cache
 G:\蓝点管理信息系统-开源版ASP.NET CORE\LdCms\LdCms.Web\obj\Release\netcoreapp2.1\LdCms.Web.RazorTargetAssemblyInfo.cs

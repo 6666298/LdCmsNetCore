@@ -34,7 +34,6 @@
                     <th width="25"><input type="checkbox" name="" value=""></th>
                     <th width="120">账号</th>
                     <th width="150">AppID</th>
-                    <th width="260">AppSecret</th>
                     <th width="">描述</th>
                     <th width="80">WCF</th>
                     <th width="100">WebService</th>
@@ -53,7 +52,6 @@
                             <td><input type="checkbox" name="id" value="@m.Account"></td>
                             <td>@(Html.Raw(Utility.Highlight(m.Account, ViewBag.keyword)))</td>
                             <td class="text-l">@(Html.Raw(Utility.Highlight(m.AppID, ViewBag.keyword)))</td>
-                            <td class="text-l">@(Html.Raw(Utility.Highlight(m.AppSecret, ViewBag.keyword)))</td>
                             <td class="text-l">@m.Description</td>
                             <td>@(m.IsWcf.ToBool() ? "是" : "否")</td>
                             <td>@(m.IsWeb.ToBool() ? "是" : "否")</td>
@@ -98,10 +96,10 @@
             $.mainu = {
                 init: function () {
                     $('.table-sort').dataTable({
-                        "aaSorting": [[1, "asc"]],                    //默认第几个排序
+                        "aaSorting": [[8, "desc"]],                    //默认第几个排序
                         "bStateSave": true,                           //状态保存
                         "aoColumnDefs": [
-                          { "orderable": false, "aTargets": [0, 10] } // 制定列不参与排序
+                          { "orderable": false, "aTargets": [0, 9] } // 制定列不参与排序
                         ],
                         "aLengthMenu": [10, 25, 50, 100]
                     });
