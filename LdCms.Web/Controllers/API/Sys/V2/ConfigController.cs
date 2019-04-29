@@ -4,17 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace LdCms.Web.Controllers.API.Sys.V2
 {
     using LdCms.IBLL.Log;
     using LdCms.IBLL.Sys;
     using LdCms.Web.Services;
+
     /// <summary>
     /// 
     /// </summary>
     [ApiVersion("2.0")]
-    [ApiController]
+    [EnableCors("AllowSameDomain")]
+    [ControllerName("sys/config")]
     public partial class ConfigController : BaseApiController
     {
         private readonly IBaseApiManager BaseApiManager;
@@ -45,11 +48,16 @@ namespace LdCms.Web.Controllers.API.Sys.V2
                 var entity = GetInterfaceAccountByUuid(uuid);
                 string companyId = entity.CompanyID;
                 var result = ConfigService.GetConfig(SystemID, companyId);
+                if (result == null)
+                    return Error(logId, "uuid invalid！");
                 var data = new
                 {
                     title = result.Title,
                     keywords = result.Keyword,
-                    description = result.Description
+                    description = result.Description,
+                    copyright = result.Copyright,
+                    icp = result.IcpNumber,
+                    statistics_code = result.StatisticsCode
                 };
                 return Success(logId, "ok", data);
             }

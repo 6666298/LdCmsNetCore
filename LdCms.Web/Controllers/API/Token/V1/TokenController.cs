@@ -42,16 +42,13 @@ namespace LdCms.Web.Controllers.API.Token.V1
         [ActionName("index")]
         public IActionResult Index()
         {
-            long logId = 0;
             try
             {
-                logId = BaseApiManager.SaveLogs("");
-
-                return Result(logId, "index");
+                return Success("ok");
             }
             catch (Exception ex)
             {
-                return Error(logId, ex.Message);
+                return Error(ex.Message);
             }
         }
         /// <summary>

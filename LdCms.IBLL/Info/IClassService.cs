@@ -16,9 +16,9 @@ namespace LdCms.IBLL.Info
         Ld_Info_Class GetClass(int systemId, string companyId, string classId);
         List<Ld_Info_Class> GetClassAll(int systemId, string companyId);
         List<Ld_Info_Class> GetClassState(int systemId, string companyId, bool state);
-        List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, bool? state);
-        List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, int? typeId, bool? state);
-        List<Ld_Info_Class> GetClassByParentId(int systemId, string companyId, string parentId, bool? state);
+        List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, string state);
+        List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, string typeId, string state);
+        List<Ld_Info_Class> GetClassByParentId(int systemId, string companyId, string parentId, string state);
 
 
     }

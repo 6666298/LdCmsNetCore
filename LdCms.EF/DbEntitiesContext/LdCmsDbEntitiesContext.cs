@@ -56,6 +56,14 @@ namespace LdCms.EF.DbEntitiesContext
                 entity.Property(e => e.StaffName).HasMaxLength(20);
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
             });
+            //媒体资源文件视图表
+            modelBuilder.Entity<V_Basics_Media>(entity => 
+            {
+                entity.ToTable("V_Basics_Media");
+                entity.HasKey(e => new { e.SystemID, e.CompanyID, e.MediaID });
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            });
+
 
 
         }

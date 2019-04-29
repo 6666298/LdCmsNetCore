@@ -135,8 +135,7 @@ namespace LdCms.Web.Controllers.MVC.Info
         {
             try
             {
-                bool state = true;
-                var lists = ClassService.GetClassByParentPath(SystemID, CompanyID, "0", state);
+                var lists = ClassService.GetClassByParentPath(SystemID, CompanyID, "0", "true");
                 if (lists == null)
                     return Error("not data！");
                 var data = from m in lists

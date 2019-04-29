@@ -7,7 +7,6 @@ namespace LdCms.BLL.Info
 {    
     using LdCms.EF.DbEntitiesContext;
     using LdCms.EF.DbModels;
-    using LdCms.EF.DbStoredProcedure;
     using LdCms.IBLL.Info;
     using LdCms.IDAL.Info;
     using LdCms.Common.Json;
@@ -136,12 +135,82 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
+        public List<Ld_Info_Notice> GetNoticeTop(int systemId, string companyId, string state, int count)
+        {
+            try
+            {
+                bool noticeState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Notice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == noticeState));
+                var expressionScalarLambda = GetExpressionScalarLambda();
+                return FindListTop(expression, expressionScalarLambda, m => m.CreateDate, false, count).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Notice> GetNoticeTop(int systemId, string companyId, string classId, string state, int count)
+        {
+            try
+            {
+                bool noticeState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Notice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId 
+                && (string.IsNullOrWhiteSpace(classId) ? m.ClassID.Equals(m.ClassID) : m.ClassID == classId)
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == noticeState)
+                );
+                var expressionScalarLambda = GetExpressionScalarLambda();
+                return FindListTop(expression, expressionScalarLambda, m => m.CreateDate, false, count).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, int pageId, int pageSize)
         {
             try
             {
                 var expression = ExtLinq.True<Ld_Info_Notice>();
                 expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId);
+                var expressionScalarLambda = GetExpressionScalarLambda();
+                int pageIndex = pageId <= 0 ? 1 : pageId;
+                int pageCount = pageSize <= 1 ? 1 : pageSize;
+                return FindListPaging(expression, expressionScalarLambda, m => m.CreateDate, false, pageIndex, pageCount).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, string state, int pageId, int pageSize)
+        {
+            try
+            {
+                bool noticeState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Notice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == noticeState));
+                var expressionScalarLambda = GetExpressionScalarLambda();
+                int pageIndex = pageId <= 0 ? 1 : pageId;
+                int pageCount = pageSize <= 1 ? 1 : pageSize;
+                return FindListPaging(expression, expressionScalarLambda, m => m.CreateDate, false, pageIndex, pageCount).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, string classId, string state, int pageId, int pageSize)
+        {
+            try
+            {
+                bool noticeState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Notice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && (string.IsNullOrWhiteSpace(classId) ? m.ClassID.Equals(m.ClassID) : m.ClassID == classId)
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == noticeState)
+                );
                 var expressionScalarLambda = GetExpressionScalarLambda();
                 int pageIndex = pageId <= 0 ? 1 : pageId;
                 int pageCount = pageSize <= 1 ? 1 : pageSize;
@@ -208,6 +277,7 @@ namespace LdCms.BLL.Info
             }
         }
 
+
         #region 私有化方法
         private DateTime ToStartTime(string startTime)
         {
@@ -256,6 +326,7 @@ namespace LdCms.BLL.Info
                     ClassName = m.ClassName,
                     Author = m.Author,
                     ImgSrc = m.ImgSrc,
+                    ImgArray=m.ImgArray,
                     StaffId = m.StaffId,
                     StaffName = m.StaffName,
                     State = m.State,

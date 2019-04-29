@@ -14,10 +14,15 @@ namespace LdCms.IBLL.Info
         bool DeleteNotice(int systemId, string companyId, string noticeId);
         Ld_Info_Notice GetNotice(int systemId, string companyId, string noticeId);
         List<Ld_Info_Notice> GetNoticeTop(int systemId, string companyId, int count);
+        List<Ld_Info_Notice> GetNoticeTop(int systemId, string companyId, string state, int count);
+        List<Ld_Info_Notice> GetNoticeTop(int systemId, string companyId, string classId, string state, int count);
         List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, int pageId, int pageSize);
+        List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, string state, int pageId, int pageSize);
+        List<Ld_Info_Notice> GetNoticePaging(int systemId, string companyId, string classId, string state, int pageId, int pageSize);
         List<Ld_Info_Notice> SearchNotice(int systemId, string companyId, string startTime, string endTime, string classId, string state, string keyword);
 
         int CountNotice(int systemId, string companyId);
+        int CountNotice(int systemId, string companyId, string classId, string state);
 
     }
 }

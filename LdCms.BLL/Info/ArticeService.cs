@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq.Expressions;
 
 namespace LdCms.BLL.Info
 {
@@ -13,7 +14,8 @@ namespace LdCms.BLL.Info
     using LdCms.Common.Json;
     using LdCms.Common.Security;
     using LdCms.Common.Extension;
-    using System.Linq.Expressions;
+    using LdCms.Common.Utility;
+    
 
     /// <summary>
     /// 
@@ -177,6 +179,25 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
+        public List<Ld_Info_Artice> GetArticeTop(int systemId, string companyId, string classId, string state, bool delete, int count)
+        {
+            try
+            {
+                bool verifyState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && (string.IsNullOrWhiteSpace(classId) ? m.ClassID.Equals(m.ClassID) : m.ClassID == classId)
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == verifyState)
+                && m.IsDel == delete
+                );
+                var scalarLambda = GetExpressionScalarLambda();
+                return FindListTop(expression, scalarLambda, m => m.CreateDate, false, count).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<Ld_Info_Artice> GetArticePaging(int systemId, string companyId, bool delete, int pageId, int pageSize)
         {
             try
@@ -200,9 +221,52 @@ namespace LdCms.BLL.Info
                 var expression = ExtLinq.True<Ld_Info_Artice>();
                 expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.ClassID == classId && m.IsDel == delete);
                 var scalarLambda = GetExpressionScalarLambda();
-                int pageIndex = pageId <= 0 ? 1 : pageId;
-                int pageCount = pageSize <= 1 ? 1 : pageSize;
+                int pageIndex = Utility.ToPageIndex(pageId);
+                int pageCount = Utility.ToPageCount(pageSize);
                 return FindListPaging(expression, scalarLambda, m => m.CreateDate, false, pageIndex, pageCount).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Artice> GetArticePaging(int systemId, string companyId, string classId, string state, bool delete, int pageId, int pageSize)
+        {
+            try
+            {
+                bool verifyState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && (string.IsNullOrWhiteSpace(classId) ? m.ClassID.Equals(m.ClassID) : m.ClassID == classId)
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == verifyState)
+                && m.IsDel == delete
+                );
+                var scalarLambda = GetExpressionScalarLambda();
+                int pageIndex = Utility.ToPageIndex(pageId);
+                int pageCount = Utility.ToPageCount(pageSize);
+                return FindListPaging(expression, scalarLambda, m => m.CreateDate, false, pageIndex, pageCount).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Artice> SearchArtice(int systemId, string companyId, string keyword)
+        {
+            try
+            {
+                int total = 200;
+                //条件
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && m.State.Value == true
+                && m.Title.Contains(keyword)
+                && m.IsDel == false);
+                //字段
+                var scalarLambda = GetExpressionScalarLambda();
+                //执行
+                var lists = FindListTop(expression, scalarLambda, m => m.CreateDate, false, total);
+                return lists == null ? null : lists.ToList();
             }
             catch (Exception ex)
             {
@@ -238,22 +302,45 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
+        
         public int CountArtice(int systemId, string companyId, bool delete)
         {
             try
             {
-                return Count(m => m.SystemID == systemId && m.CompanyID == companyId && m.IsDel == delete);
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.IsDel == delete);
+                return Count(expression);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public int CountArtice(int systemId, string companyId,string classId,bool delete)
+        public int CountArtice(int systemId, string companyId, string classId, bool delete)
         {
             try
             {
-                return Count(m => m.SystemID == systemId && m.CompanyID == companyId && m.ClassID == classId && m.IsDel == delete);
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.ClassID == classId && m.IsDel == delete);
+                return Count(expression);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public int CountArtice(int systemId, string companyId, string classId, string state, bool delete)
+        {
+            try
+            {
+                bool verifyState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Artice>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && (string.IsNullOrWhiteSpace(classId) ? m.ClassID.Equals(m.ClassID) : m.ClassID == classId)
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == verifyState)
+                && m.IsDel == delete
+                );
+                return Count(expression);
             }
             catch (Exception ex)
             {

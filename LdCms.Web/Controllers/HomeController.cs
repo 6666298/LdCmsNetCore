@@ -6,6 +6,8 @@ using Microsoft.Extensions.Options;
 namespace LdCms.Web.Controllers
 {
     using LdCms.Common.Extension;
+    using LdCms.Common.Json;
+    using LdCms.EF.DbModels;
     using LdCms.IBLL.Info;
     using LdCms.IBLL.Sys;
     using LdCms.Web.Models;
@@ -65,19 +67,8 @@ namespace LdCms.Web.Controllers
         }
         public JsonResult Show()
         {
-            List<object> result = new List<object>();
-            for (var i = 0; i < 10; i++)
-            {
-                result.Add(ArticeService.SaveArtice(new EF.DbModels.Ld_Info_Artice()
-                {
-                    SystemID = 100101,
-                    CompanyID = "300001",
-                    ClassID = "4312059490",
-                    ClassName = "公司新闻",
-                    Title = Common.Security.GeneralCodeHelper.GetRandomString(32),
-                    Content = "公司新闻"
-                }));
-            }
+            string[] result = new string[] { "a", "b" };
+
             return Json(result);
         }
 

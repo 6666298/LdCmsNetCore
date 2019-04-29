@@ -106,6 +106,7 @@ namespace LdCms.Web
             builder.Register(c => new DAL.Basics.MediaDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Basics.IMediaDAL>().InstancePerLifetimeScope();
             builder.Register(c => new DAL.Basics.MediaInterfaceDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Basics.IMediaInterfaceDAL>().InstancePerLifetimeScope();
             builder.Register(c => new DAL.Basics.MediaMemberDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Basics.IMediaMemberDAL>().InstancePerLifetimeScope();
+            builder.Register(c => new DAL.Basics.VMediaDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Basics.IVMediaDAL>().InstancePerLifetimeScope();
 
             builder.Register(c => new DAL.Info.NoticeCategoryDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Info.INoticeCategoryDAL>().InstancePerLifetimeScope();
             builder.Register(c => new DAL.Info.NoticeDAL(c.Resolve<LdCmsDbEntitiesContext>())).As<IDAL.Info.INoticeDAL>().InstancePerLifetimeScope();
@@ -159,6 +160,7 @@ namespace LdCms.Web
             builder.Register(c => new BLL.Basics.MediaService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Basics.IMediaDAL>())).As<IBLL.Basics.IMediaService>().InstancePerLifetimeScope();
             builder.Register(c => new BLL.Basics.MediaInterfaceService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Basics.IMediaInterfaceDAL>())).As<IBLL.Basics.IMediaInterfaceService>().InstancePerLifetimeScope();
             builder.Register(c => new BLL.Basics.MediaMemberService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Basics.IMediaMemberDAL>())).As<IBLL.Basics.IMediaMemberService>().InstancePerLifetimeScope();
+            builder.Register(c => new BLL.Basics.VMediaService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Basics.IVMediaDAL>())).As<IBLL.Basics.IVMediaService>().InstancePerLifetimeScope();
 
             builder.Register(c => new BLL.Info.NoticeCategoryService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Info.INoticeCategoryDAL>())).As<IBLL.Info.INoticeCategoryService>().InstancePerLifetimeScope();
             builder.Register(c => new BLL.Info.NoticeService(c.Resolve<LdCmsDbEntitiesContext>(), c.Resolve<IDAL.Info.INoticeDAL>())).As<IBLL.Info.INoticeService>().InstancePerLifetimeScope();

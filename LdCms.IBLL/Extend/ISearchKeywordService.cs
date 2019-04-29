@@ -16,6 +16,7 @@ namespace LdCms.IBLL.Extend
         Ld_Extend_SearchKeyword GetSearchKeyword(long id);
         List<Ld_Extend_SearchKeyword> GetSearchKeyword(int systemId, string companyId, int count);
         List<Ld_Extend_SearchKeyword> GetSearchKeywordByKeyword(int systemId, string companyId, string keyword, int count);
+        List<Ld_Extend_SearchKeyword> GetSearchKeywordByTop(int systemId, string companyId, string memberId, int count);
         List<Ld_Extend_SearchKeyword> SearchSearchKeyword(int systemId, string companyId, string startTime, string endTime, string keyword, int count);
         List<CountSearchKeywordByKeywordResult> CountSearchKeywordByKeyword(int systemId, string companyId, int count);
         List<CountSearchKeywordByKeywordResult> CountSearchKeywordByKeyword(int systemId, string companyId, string startTime, string endTime, string keyword, int count);

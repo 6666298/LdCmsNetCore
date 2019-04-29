@@ -18,9 +18,6 @@ namespace LdCms.Web.Controllers.API.Service.V2
     using LdCms.Common.Utility;
     using LdCms.Common.Extension;
     using LdCms.Web.Services;
-    
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -30,11 +27,13 @@ namespace LdCms.Web.Controllers.API.Service.V2
     public class ServiceMessageBoardController : BaseApiController
     {
         private readonly IBaseApiManager BaseApiManager;
+        private readonly IHttpContextAccessor Accessor;
         private readonly IConfigService ConfigService;
         private readonly IMessageBoardService MessageBoardService;
-        public ServiceMessageBoardController(IBaseApiManager BaseApiManager, IConfigService ConfigService, IMessageBoardService MessageBoardService) : base(BaseApiManager)
+        public ServiceMessageBoardController(IBaseApiManager BaseApiManager, IHttpContextAccessor Accessor, IConfigService ConfigService, IMessageBoardService MessageBoardService) : base(BaseApiManager)
         {
             this.BaseApiManager = BaseApiManager;
+            this.Accessor = Accessor;
             this.ConfigService = ConfigService;
             this.MessageBoardService = MessageBoardService;
         }
@@ -54,7 +53,11 @@ namespace LdCms.Web.Controllers.API.Service.V2
                 string companyId = entityInterfaceAccount.CompanyID;
                 string ipAddress = Net.Ip;
                 string name = GetJObjectValue(fromValue, "name");
+                string phone = GetJObjectValue(fromValue, "phone");
+                string email = GetJObjectValue(fromValue, "email");
+                string address = GetJObjectValue(fromValue, "address");
                 string content = GetJObjectValue(fromValue, "content");
+
                 if (string.IsNullOrWhiteSpace(name))
                     return Error("昵称不能为空！");
                 if (string.IsNullOrWhiteSpace(content))
@@ -76,6 +79,9 @@ namespace LdCms.Web.Controllers.API.Service.V2
                     SystemID = SystemID,
                     CompanyID = companyId,
                     Name = name,
+                    Phone = phone,
+                    Email = email,
+                    Address = address,
                     Content = content,
                     IpAddress = ipAddress
                 };
@@ -90,29 +96,29 @@ namespace LdCms.Web.Controllers.API.Service.V2
                 return Error(logId, ex.Message);
             }
         }
+        [HttpGet("paging")]
         [ActionName("list")]
-        public IActionResult GetListPaging(string uuid, int page, int size)
+        public IActionResult GetListPaging(string uuid)
         {
             long logId = 0;
             try
             {
                 logId = BaseApiManager.SaveLogs(uuid);
-                if (!IsUuid(uuid))
-                    return Error(logId, "verify uuid fail！");
+                if (!IsUuid(uuid)) { return Error(logId, "verify uuid fail！"); }
+                    
                 var entityInterfaceAccount = GetInterfaceAccountByUuid(uuid);
                 string companyId = entityInterfaceAccount.CompanyID;
-                int pageId = page.ToInt() <= 0 ? 1 : page;
-                int pageSize = size.ToInt() > 100 ? 100 : size;
+                int pageIndex = Utility.ToPageIndex(Accessor.HttpContext.Request.GetQueryString("page").ToInt());
+                int pageCount = Utility.ToPageCount(Accessor.HttpContext.Request.GetQueryString("count").ToInt());
 
                 bool state = true;
-                int totalNum = 0;
-                var lists = MessageBoardService.GetMessageBoardPaging(SystemID, companyId, state, pageId, pageSize, out totalNum);
-                if (lists == null)
-                    return Error(logId, "not data！");
+                int total = MessageBoardService.CountMessageBoard(SystemID, companyId, state);
+                var lists = MessageBoardService.GetMessageBoardPaging(SystemID, companyId, state, pageIndex, pageCount);
+                if (lists == null) { return Error(logId, "not data！"); }
                 var data = from m in lists
                            select new
                            {
-                               messageid = m.MessageID,
+                               id = m.MessageID,
                                company_name = m.CompanyName.IIF(""),
                                name = m.Name.IIF(""),
                                phone = m.Phone.IIF(""),
@@ -126,7 +132,7 @@ namespace LdCms.Web.Controllers.API.Service.V2
                                ip = m.IpAddress.IIF(""),
                                date = m.CreateDate
                            };
-                return Success(logId, "ok", data);
+                return Success(logId, "ok", new { page = pageIndex, total, rows = data });
             }
             catch (Exception ex)
             {
@@ -134,6 +140,7 @@ namespace LdCms.Web.Controllers.API.Service.V2
             }
         }
 
+        #region 私有方法
         private bool IsKeyword(string[] keyword,string content)
         {
             foreach (var item in keyword)
@@ -160,7 +167,7 @@ namespace LdCms.Web.Controllers.API.Service.V2
                 throw new Exception(ex.Message);
             }
         }
-
+        #endregion
 
     }
 }

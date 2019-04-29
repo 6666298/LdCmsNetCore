@@ -119,6 +119,22 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
+        public Ld_Info_Block GetBlock(int systemId, string companyId, string tags, string state)
+        {
+            try
+            {
+                bool noticeState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Block>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.Tags == tags
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Value.Equals(m.State) : m.State.Value == noticeState));
+                return Find(expression);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<Ld_Info_Block> GetBlockAll(int systemId, string companyId, string state)
         {
             try

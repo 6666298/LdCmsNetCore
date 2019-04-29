@@ -20,6 +20,7 @@ namespace LdCms.Common.Enum
         }
         public enum Client
         {
+            Empty = 0,
             Web = 1,
             M = 2,
             WX = 3,

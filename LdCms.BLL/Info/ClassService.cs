@@ -256,7 +256,7 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
-        public List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, bool? state)
+        public List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, string state)
         {
             try
             {
@@ -268,37 +268,11 @@ namespace LdCms.BLL.Info
                         throw new Exception("class id invalid！");
                     parentPath = string.Format("{0},{1}", entity.ParentPath, classId);
                 }
-                bool verifyState = state.HasValue;
+                bool verifyState = state.ToBool();
                 var expression = ExtLinq.True<Ld_Info_Class>();
                 expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId 
-                &&  (m.ParentPath.Contains(parentPath))
-                && (verifyState ? m.State.Value == state.Value : m.State.Equals(m.State)));
-                return FindList(expression, m => m.OrderPath, true).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, int? typeId, bool? state)
-        {
-            try
-            {
-                string parentPath = "0";
-                if (!string.IsNullOrWhiteSpace(classId) && classId != "0")
-                {
-                    var entity = GetClass(systemId, companyId, classId);
-                    if (entity == null)
-                        throw new Exception("class id invalid！");
-                    parentPath = string.Format("{0},{1}", entity.ParentPath, classId);
-                }
-                bool verifyState = state.HasValue;
-                bool verifyType = typeId.HasValue;
-                var expression = ExtLinq.True<Ld_Info_Class>();
-                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
                 && (m.ParentPath.Contains(parentPath))
-                && (verifyState ? m.State.Value == state.Value : m.State.Equals(m.State))
-                && (verifyType ? m.ClassType.Value == typeId.Value : m.ClassType.Equals(m.ClassType))
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Equals(m.State) : m.State.Value == verifyState)
                 );
                 return FindList(expression, m => m.OrderPath, true).ToList();
             }
@@ -307,17 +281,44 @@ namespace LdCms.BLL.Info
                 throw new Exception(ex.Message);
             }
         }
-
-
-        public List<Ld_Info_Class> GetClassByParentId(int systemId, string companyId, string parentId, bool? state)
+        public List<Ld_Info_Class> GetClassByParentPath(int systemId, string companyId, string classId, string typeId, string state)
         {
             try
             {
-                bool verifyState = state.HasValue;
+                string parentPath = "0";
+                if (!string.IsNullOrWhiteSpace(classId) && classId != "0")
+                {
+                    var entity = GetClass(systemId, companyId, classId);
+                    if (entity == null)
+                        throw new Exception("class id invalid！");
+                    parentPath = string.Format("{0},{1}", entity.ParentPath, classId);
+                }
+                bool verifyState = state.ToBool();
+                int verifyTypeId = typeId.ToInt();
                 var expression = ExtLinq.True<Ld_Info_Class>();
-                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.ParentID == parentId
-                && verifyState ? m.State.Value == state.Value : m.State.Equals(m.State));
-                return FindList(expression, m => new { m.OrderID }, true).ToList();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && (m.ParentPath.Contains(parentPath))
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Equals(m.State) : m.State.Value == verifyState)
+                && (string.IsNullOrWhiteSpace(typeId) ? m.ClassType.Equals(m.ClassType) : m.ClassType.Value == verifyTypeId)
+                );
+                return FindList(expression, m => m.OrderPath, true).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Ld_Info_Class> GetClassByParentId(int systemId, string companyId, string parentId, string state)
+        {
+            try
+            {
+                string verifyParentId = parentId.IIF("0");
+                bool verifyState = state.ToBool();
+                var expression = ExtLinq.True<Ld_Info_Class>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && m.ParentID == verifyParentId
+                && (string.IsNullOrWhiteSpace(state) ? m.State.Equals(m.State) : m.State.Value == verifyState)
+                );
+                return FindList(expression, m => m.OrderID, true).ToList();
             }
             catch (Exception ex)
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,9 @@ namespace LdCms.Web
     using LdCms.EF.DbEntitiesContext;
     using LdCms.Common.Extension;
     using LdCms.Plugins.UEditor;
+    using LdCms.Common.Json;
+    using LdCms.EF.DbModels;
+    using System.Linq;
 
     public class Startup
     {
@@ -72,11 +76,10 @@ namespace LdCms.Web
 
             //跨域请求 API
             //.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().AllowCredentials()
-            var urls = Configuration["AppCors:Url"].Split(",");
+            var urls = GetAppCors(Configuration["AppCors:Url"].Split(","));
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSameDomain",
-                    builder => builder.WithOrigins(urls));
+                options.AddPolicy("AllowSameDomain", builder => builder.WithOrigins(urls));
             });
 
 
@@ -113,9 +116,6 @@ namespace LdCms.Web
             app.UseAuthentication();
             app.UseStaticHttpContext();
 
-            
-
-
 
             app.UseMvc(routes =>
             {
@@ -132,6 +132,41 @@ namespace LdCms.Web
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new AutofacModule());
+        }
+        /// <summary>
+        /// 获取跨域URL列表
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
+        public string[] GetAppCors(string[] urls)
+        {
+            try
+            {
+                int errCode = -1;
+                string errMsg = "fail";
+                int systemId = BaseSystemConfig.SystemID;
+                LdCmsDbEntitiesContext dbContent = new LdCmsDbEntitiesContext();
+                var result = dbContent.SP_Get_Sys_AccessCorsHostAll(systemId, out errCode, out errMsg);
+                if (result == null)
+                {
+                    return urls;
+                }
+                else
+                {
+                    var lists = result.ToObject<List<Ld_Sys_AccessCorsHost>>();
+                    int count = lists.Count();
+                    string[] arrayUrl = new string[count];
+                    for (var i = 0; i < count; i++)
+                    {
+                        arrayUrl[i] = lists[i].WebHost;
+                    }
+                    return arrayUrl;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
 

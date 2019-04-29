@@ -58,7 +58,7 @@ namespace LdCms.Web.Controllers.API.Logs.V2
         /// <param name="fromValue"></param>
         /// <returns>
         /// /cgi-bin/v2/log/visitor/record/save?uuid=149c1791f9d24524a2e682616b4bf221
-        /// {"host":"","absolute_uri":"","query_string":""}
+        /// {"host":"www.ldcms.net","absolute_uri":"https://www.ldcms.net/sites/300001/index.html","query_string":"id=123"}
         /// </returns>
         [HttpPost]
         [ActionName("save")]

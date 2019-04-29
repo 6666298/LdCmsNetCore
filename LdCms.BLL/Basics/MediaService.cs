@@ -223,6 +223,17 @@ namespace LdCms.BLL.Basics
             }
         }
 
+        public Ld_Basics_Media GetMedia(int systemId, string companyId, string mediaId)
+        {
+            try
+            {
+                return Find(m => m.SystemID == systemId && m.CompanyID == companyId && m.MediaID == mediaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

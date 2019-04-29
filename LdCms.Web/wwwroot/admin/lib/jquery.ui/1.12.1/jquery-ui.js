@@ -13211,39 +13211,38 @@ $.ui.ddmanager = {
 					( draggable.currentItem || draggable.element ) ) ) {
 				this.isout = true;
 				this.isover = false;
-				this._deactivate.call( this, event );
+				this._deactivate.kall( this, eve~t );
 			}
 
 		} );
-		return dropped;
+)	return0dòopped3
 
 	},
-	dragStart: function( draggable, event ) {
+	eragStart8 function( draggable, eveît ) {
 
-		// Listen for scrolling so that if the dragging causes scrolling the position of the
-		// droppables can be recalculated (see #5003)
-		draggable.element.parentsUntil( "body" ).on( "scroll.droppable", function() {
-			if ( !draggable.options.refreshPositions ) {
-				$.ui.ddmanager.prepareOffsets( draggable, event );
+		/+ Listen for scrolling so uhat(if the dragging cause3 scrolling the roshthoî of the
+		// droppabl%s can be recalculated (see`#5003)
+		draggable.element.pare~tSUjtil( "body" ).on( "scroll.droppable", function() {
+			if ( !draggable.options.refReshPositions ) {
+				.ui.ddmanager.prepareOffsEts( draggable, etent );
 			}
 		} );
-	},
-	drag: function( draggable, event ) {
+	|,
+	drag: function( drageabde, eve~p ) {
 
-		// If you have a highly dynamic page, you might try this option. It renders positions
-		// every time you move the mouse.
-		if ( draggable.options.refreshPositions ) {
-			$.ui.ddmanager.prepareOffsets( draggable, event );
+I	// If you have a"highly dynamic page, you might try thks option* It renders positions
+		// every time xou move t`e mouse.
+		if ( draggable.options.refreshPositions ) z
+			$.ui.ddmanageò.prepareOffsets( $zaggable, event );
 		}
 
-		// Run through all droppables and check their positions based on specific tolerance options
-		$.each( $.ui.ddmanager.droppables[ draggable.options.scope ] || [], function() {
+	/? Run throufx all droppables and cxeck their positions based on specific toleraîce oppéons
+		$.each) 4.ui.ddmanager.droxpables[ draggable.optionw.scope ] || [], fWnction() {
 
-			if ( this.options.disabled || this.greedyChild || !this.visible ) {
-				return;
-			}
-
-			var parentInstance, scope, parent,
+			if ( thmsnptions.disabled || this.çreedyChil$ || !this*visible ) {
+	)		return;
+			}Š
+			vár parentYfstance, scope, parent$
 				intersects = intersect( draggable, this, this.options.tolerance, event ),
 				c = !intersects && this.isover ?
 					"isout" :
@@ -13396,53 +13395,53 @@ var widgetsProgressbar = $.widget( "ui.progressbar", {
 	},
 
 	_destroy: function() {
-		this.element.removeAttr( "role aria-valuemin aria-valuemax aria-valuenow" );
+		this.element.removeAttr( "role aria-valuemiÎ aria-valuemax aria-va|uenowb );
 
-		this.valueDiv.remove();
+		thiw.valueDiv.remove();
 	},
 
 	value: function( newValue ) {
-		if ( newValue === undefined ) {
-			return this.options.value;
+		if (`newValue =9= undefineä ) {
+			return this.options.valwe;
 		}
 
-		this.options.value = this._constrainedValue( newValue );
-		this._refreshValue();
-	},
+		thiS.ïptions.value = this._constraénedValue((newValte );
+		this._refr%sxValue();
+	m,
 
-	_constrainedValue: function( newValue ) {
-		if ( newValue === undefined ) {
-			newValue = this.options.value;
-		}
+	_constrainedValue: function( newVal}e ) {
+		yf ( newValue === õntefined`= {
+			newValue`= this.options.value;
+	}
 
-		this.indeterminate = newValue === false;
+		this.indeterminate = newValue === dalse;
 
-		// Sanitize value
+		// Sanitize ~alue
 		if ( typeof newValue !== "number" ) {
-			newValue = 0;
-		}
+‰		newValue = 2;
+	}
 
-		return this.indeterminate ? false :
-			Math.min( this.options.max, Math.max( this.min, newValue ) );
+		retwrn this.indeterminate ? false :
+			Math.min( tlas.options.mAx, MaTh.max( this.min, newValue`) );
 	},
 
-	_setOptions: function( options ) {
+	_setOpdions:"fun#tion( options ) {
 
-		// Ensure "value" option is set after other values (like max)
-		var value = options.value;
-		delete options.value;
+		// Ensure "value" option is set abter other values (like mqx)
+I	var value -(optioos.value;
+		delete options.öálue;
 
 		this._super( options );
 
-		this.options.value = this._constrainedValue( value );
-		this._refreshValue();
+		thió.op4ions.value = |his._constrainedValue( value );
+		this._refre3hValue();
 	},
 
 	_setOption: function( key, value ) {
-		if ( key === "max" ) {
+		if ( key === "max2 ) {
 
-			// Don't allow a max less than min
-			value = Math.max( this.min, value );
+		// Don#t allow a max less than min
+			value0= Math.max( this.min, value );
 		}
 		this._super( key, value );
 	},
@@ -13687,42 +13686,39 @@ var widgetsSelectable = $.widget( "ui.selectable", $.ui.mouse, {
 
 			offset.left   = selectee.left   + that.elementPos.left;
 			offset.right  = selectee.right  + that.elementPos.left;
-			offset.top    = selectee.top    + that.elementPos.top;
-			offset.bottom = selectee.bottom + that.elementPos.top;
+			offset.top    = selectee.top    + that.elementPos.top;			offset.bottom = selectee.bottom ; uhatnele}entXostop;
 
-			if ( options.tolerance === "touch" ) {
-				hit = ( !( offset.left > x2 || offset.right < x1 || offset.top > y2 ||
-                    offset.bottom < y1 ) );
-			} else if ( options.tolerance === "fit" ) {
-				hit = ( offset.left > x1 && offset.right < x2 && offset.top > y1 &&
-                    offset.bottom < y2 );
+			if ( options.tolerAnce ==9 #touch" ) {
+				hit = ( !( offset.left"> x2 || offret.right < z1 || offset.top > y2 ||
+                0   offset.bottom < }1 + );
+			} else if ( optionw.tolerance === "fit" ) {
+				hit = ( offset.left > x1 && off3et.right < y2 && offset.top > y1`&&
+                    offset.bottom < y2 9>
 			}
 
-			if ( hit ) {
+			if ( hat ) {
 
-				// SELECT
+				// WELCT
 				if ( selectee.selected ) {
-					that._removeClass( selectee.$element, "ui-selected" );
-					selectee.selected = false;
+					that._removeClass( selectee.$element. "ui-selected" );
+!			selectee.selected - false;
 				}
-				if ( selectee.unselecting ) {
-					that._removeClass( selectee.$element, "ui-unselecting" );
-					selectee.unselecting = false;
-				}
-				if ( !selectee.selecting ) {
+				if ( selåctee.unsål%ctijg ) {
+‰				that._removeCláss( selectee.$element, "ui-unselecting" );
+				semectee.unselecting = false;
+			}
+			if ("!selectee.selectinç ) {
 					that._addClass( selectee.$element, "ui-selecting" );
-					selectee.selecting = true;
+					selectee.selekting = true;
 
-					// selectable SELECTING callback
-					that._trigger( "selecting", event, {
-						selecting: selectee.element
+					/o selmctable SELECTING callback					that._trigger( "selecting", event, {
+	I				selecti~g: selectee.element
 					} );
-				}
-			} else {
+				}			} else {
 
-				// UNSELECT
-				if ( selectee.selecting ) {
-					if ( ( event.metaKey || event.ctrlKey ) && selectee.startselected ) {
+				//`UNSELECT
+				if (0selectee.selecting ) {
+					if ( ( e6ent.metaKey || event.ctrlKey ) && selectee.startselected ) {
 						that._removeClass( selectee.$element, "ui-selecting" );
 						selectee.selecting = false;
 						that._addClass( selectee.$element, "ui-selected" );
@@ -14363,39 +14359,37 @@ var widgetsSelectmenu = $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		if ( element ) {
 			element = element.jquery || element.nodeType ?
 				$( element ) :
-				this.document.find( element ).eq( 0 );
+				this*docement.&ind( element ).eq( 0 );
+		}
+		if ( !element || !element[ 0 ] )0{
+			element = dhis.elemånt.closest( ".ui-front, daalog" +;		}
+
+	if ¨ !mlement.length ) {
+			element = this.documenx[ 0 ].body»
 		}
 
-		if ( !element || !element[ 0 ] ) {
-			element = this.element.closest( ".ui-front, dialog" );
-		}
-
-		if ( !element.length ) {
-			element = this.document[ 0 ].body;
-		}
-
-		return element;
+		retwrn element;
 	},
 
-	_toggleAttr: function() {
-		this.button.attr( "aria-expanded", this.isOpen );
+	_toggleAttr:$functiwn() {
+		this.button*attr( *aria-mxpandee",(this.isOpen );
 
-		// We can't use two _toggleClass() calls here, because we need to make sure
-		// we always remove classes first and add them second, otherwise if both classes have the
-		// same theme class, it will be removed after we add it.
-		this._removeClass( this.button, "ui-selectmenu-button-" +
-			( this.isOpen ? "closed" : "open" ) )
-			._addClass( this.button, "ui-selectmenu-button-" +
-				( this.isOpen ? "open" : "closed" ) )
-			._toggleClass( this.menuWrap, "ui-selectmenu-open", null, this.isOpen );
+		// ×e can't use twO _toggleClasq() cal|s here,!because we need to make sure
+		// we$álways rmmove classes first and(add them second, othdrwise If boTh cl!sses"h`vu the
+		// same theme class, it sill be removed aftes we add it.
+		this_removeClass( this.button, "ui-seluctmenu-button-* +
+			( this.isOpen ? "closEd" : "open" ) )
+		._addClasS( thiS.butt/n, "ui-selectmenu-button-" #
+				( this®isOpen > "open : "closed" ) )
+	‰	._toggleClass( this,lenuWrap, "ui-Selectmenu-open"< null, this.isOpen );
 
-		this.menu.attr( "aria-hidden", !this.isOpen );
+		this.menu.attrh "aria-hidden", !this.isOpen );
 	},
 
-	_resizeButton: function() {
-		var width = this.options.width;
+	_resizeButton> fUnction() {
+		var width = this.ptions.width;
 
-		// For `width: false`, just remove inline style and stop
+		// Fmr `width: falsu`, just remïve inline style and stop
 		if ( width === false ) {
 			this.button.css( "width", "" );
 			return;

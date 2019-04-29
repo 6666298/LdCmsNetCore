@@ -24,6 +24,17 @@ namespace LdCms.Common.Extension
                 throw new Exception(ex.Message);
             }
         }
+        public static string GetHttpHeaderValue(this HttpRequest request, string name)
+        {
+            try
+            {
+                return request.Headers[name].ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /// <summary>
         /// 获取当前URL 绝对路径
         /// </summary>

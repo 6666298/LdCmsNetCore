@@ -101,13 +101,12 @@ namespace LdCms.BLL.Service
                 throw new Exception(ex.Message);
             }
         }
-        public List<Ld_Service_MessageBoard> GetMessageBoardPaging(int systemId, string companyId, int pageId, int pageSize, out int rowCount)
+        public List<Ld_Service_MessageBoard> GetMessageBoardPaging(int systemId, string companyId, int pageId, int pageSize)
         {
             try
             {
                 var expression = ExtLinq.True<Ld_Service_MessageBoard>();
                 expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId);
-                rowCount = Count(expression);
                 var lists = FindListPaging(expression, m => m.CreateDate, false, pageId, pageSize);
                 return lists == null ? null : lists.ToList();
             }
@@ -116,13 +115,12 @@ namespace LdCms.BLL.Service
                 throw new Exception(ex.Message);
             }
         }
-        public List<Ld_Service_MessageBoard> GetMessageBoardPaging(int systemId, string companyId, bool state, int pageId, int pageSize, out int rowCount)
+        public List<Ld_Service_MessageBoard> GetMessageBoardPaging(int systemId, string companyId, bool state, int pageId, int pageSize)
         {
             try
             {
                 var expression = ExtLinq.True<Ld_Service_MessageBoard>();
                 expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && (m.State.HasValue ? m.State.Value : false) == state);
-                rowCount = Count(expression);
                 var lists = FindListPaging(expression, m => m.CreateDate, false, pageId, pageSize);
                 return lists == null ? null : lists.ToList();
             }
@@ -131,7 +129,6 @@ namespace LdCms.BLL.Service
                 throw new Exception(ex.Message);
             }
         }
-
         public List<Ld_Service_MessageBoard> SearchMessageBoard(int systemId, string companyId, string startTime, string endTime, string state, string keyword)
         {
             try
@@ -170,6 +167,34 @@ namespace LdCms.BLL.Service
                 throw new Exception(ex.Message);
             }
         }
+
+        public int CountMessageBoard(int systemId, string companyId)
+        {
+            try
+            {
+                var expression = ExtLinq.True<Ld_Service_MessageBoard>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId);
+                return Count(expression);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public int CountMessageBoard(int systemId, string companyId, bool state)
+        {
+            try
+            {
+                var expression = ExtLinq.True<Ld_Service_MessageBoard>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId && (m.State.HasValue ? m.State.Value : false) == state);
+                return Count(expression);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
     }
 }

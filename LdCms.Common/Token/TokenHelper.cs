@@ -61,7 +61,7 @@ namespace LdCms.Common.Token
             try
             {
                 string strGuid = GeneralCodeHelper.GetGuid(GeneralCodeHelper.GuIdFormat.N);
-                string intGuid = GeneralCodeHelper.GuidTo16String();
+                string intGuid = GeneralCodeHelper.GuidTo16String().PadLeft(16, '0');
                 string randomStr = GeneralCodeHelper.RandomString(16);
                 return string.Format("{0}{1}{2}", strGuid, intGuid, randomStr);
             }
@@ -76,7 +76,7 @@ namespace LdCms.Common.Token
             {
                 int randomLength = 47 - getNum.ToString().Length;
                 string strGuid = GeneralCodeHelper.GetGuid(GeneralCodeHelper.GuIdFormat.N);
-                string intGuid = GeneralCodeHelper.GuidTo16String();
+                string intGuid = GeneralCodeHelper.GuidTo16String().PadLeft(16, '0');
                 string aRandomStr = GeneralCodeHelper.RandomString(randomLength, true, true, true, true);
                 string bRandomStr = GeneralCodeHelper.RandomString(32, true, true, true, true);
                 return string.Format("{0}_{1}{2}{3}{4}", getNum, aRandomStr, strGuid, intGuid, bRandomStr);

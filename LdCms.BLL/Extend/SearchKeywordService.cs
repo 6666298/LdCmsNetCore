@@ -14,6 +14,7 @@ namespace LdCms.BLL.Extend
     using LdCms.Common.Security;
     using LdCms.Common.Extension;
     using LdCms.Model.Extend;
+    using LdCms.Common.Utility;
 
     /// <summary>
     /// 
@@ -137,6 +138,24 @@ namespace LdCms.BLL.Extend
                 throw new Exception(ex.Message);
             }
         }
+        public List<Ld_Extend_SearchKeyword> GetSearchKeywordByTop(int systemId, string companyId, string memberId, int count)
+        {
+            try
+            {
+                int total = Utility.ToTopTotal(count);
+                var expression = ExtLinq.True<Ld_Extend_SearchKeyword>();
+                expression = expression.And(m => m.SystemID == systemId && m.CompanyID == companyId
+                && m.IsTop == true
+                && (string.IsNullOrWhiteSpace(memberId) ? m.MemberID.Equals(m.MemberID) : m.MemberID == memberId)
+                );
+                return FindListTop(expression, m => m.ID, false, total).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<Ld_Extend_SearchKeyword> SearchSearchKeyword(int systemId, string companyId, string startTime, string endTime, string keyword, int count)
         {
             try

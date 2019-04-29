@@ -143,19 +143,16 @@ namespace LdCms.Web.Controllers.MVC.Sys
             try
             {
                 string funcId = PermissionEnum.CodeFormat((int)PermissionEnum.系统管理.屏蔽词.编辑);
-                if (!IsPermission(funcId))
-                    return Error("您没有操作权限，请联系系统管理员！");
-                string shielding = GetFormValue("Shielding");
+                if (!IsPermission(funcId)) { return Error("您没有操作权限，请联系系统管理员！"); }
+                string fShielding = GetFormValue("fShielding");
                 var m = ConfigService.GetConfigPro(SystemID, CompanyID);
-                if (m == null)
-                    return Error("公司编号不存在！");
+                if (m == null) { return Error("公司编号不存在！"); }
                 long operationId = 0;
                 var entity = m;
-                entity.Shielding = shielding;
+                entity.Shielding = fShielding;
                 TableOperationManager.Update(m, entity.ToJson(), out operationId);
-                var result = ConfigService.UpdateConfigShieldingPro(SystemID, CompanyID, shielding);
+                var result = ConfigService.UpdateConfigShieldingPro(SystemID, CompanyID, fShielding);
                 TableOperationManager.SetState(operationId, result);
-
                 return Success("ok");
             }
             catch (Exception ex)

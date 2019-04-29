@@ -6,9 +6,25 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <Compile Remove="wwwroot\admin\lib\webuploader\0.1.5\cropper\**" />
+    <Compile Remove="wwwroot\admin\lib\webuploader\0.1.5\image-upload\**" />
+    <Compile Remove="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\**" />
+    <Compile Remove="wwwroot\admin\lib\webuploader\0.1.5\requirejs\**" />
     <Content Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <Content Remove="wwwroot\admin\lib\webuploader\0.1.5\cropper\**" />
+    <Content Remove="wwwroot\admin\lib\webuploader\0.1.5\image-upload\**" />
+    <Content Remove="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\**" />
+    <Content Remove="wwwroot\admin\lib\webuploader\0.1.5\requirejs\**" />
     <EmbeddedResource Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <EmbeddedResource Remove="wwwroot\admin\lib\webuploader\0.1.5\cropper\**" />
+    <EmbeddedResource Remove="wwwroot\admin\lib\webuploader\0.1.5\image-upload\**" />
+    <EmbeddedResource Remove="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\**" />
+    <EmbeddedResource Remove="wwwroot\admin\lib\webuploader\0.1.5\requirejs\**" />
     <None Remove="wwwroot\admin\lib\ueditor\1.4.3\net\**" />
+    <None Remove="wwwroot\admin\lib\webuploader\0.1.5\cropper\**" />
+    <None Remove="wwwroot\admin\lib\webuploader\0.1.5\image-upload\**" />
+    <None Remove="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\**" />
+    <None Remove="wwwroot\admin\lib\webuploader\0.1.5\requirejs\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +37,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -202,16 +218,10 @@
     <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.config.js" />
     <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.parse.js" />
     <None Include="wwwroot\admin\lib\ueditor\1.4.3\ueditor.parse.min.js" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\cropper\cropper.js" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\cropper\uploader.js" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\expressInstall.swf" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\image-upload\upload.js" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\images\icons.psd" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\images\progress.psd" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\md5-demo\script.js" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\README.md" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\requirejs\app.js" />
-    <None Include="wwwroot\admin\lib\webuploader\0.1.5\requirejs\require.js" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\Uploader.swf" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.custom.js" />
     <None Include="wwwroot\admin\lib\webuploader\0.1.5\webuploader.custom.min.js" />
@@ -245,10 +255,6 @@
     <None Include="wwwroot\admin\static\h-ui.admin\js\H-ui.admin.js" />
     <None Include="wwwroot\admin\static\h-ui\js\H-ui.js" />
     <None Include="wwwroot\admin\static\h-ui\js\H-ui.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\API\Info\V2\" />
   </ItemGroup>
 
 </Project>

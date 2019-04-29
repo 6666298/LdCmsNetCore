@@ -49,11 +49,11 @@ namespace LdCms.Web.Controllers.MVC.Service
 
                 int pageId = 1;
                 int pageSize = 100;
-                int rowCount = 0;
+                int rowCount = MessageBoardService.CountMessageBoard(SystemID, CompanyID);
                 List<Ld_Service_MessageBoard> lists = new List<Ld_Service_MessageBoard>();
                 string strKeyword = string.Format("{0}{1}", startTime, keyword);
                 if (string.IsNullOrWhiteSpace(strKeyword))
-                    lists = MessageBoardService.GetMessageBoardPaging(SystemID, CompanyID, pageId, pageSize, out rowCount);
+                    lists = MessageBoardService.GetMessageBoardPaging(SystemID, CompanyID, pageId, pageSize);
                 else
                     lists = MessageBoardService.SearchMessageBoard(SystemID, CompanyID, startTime, endTime, state, keyword);
                 int totalNum = rowCount > 0 ? rowCount : lists == null ? 0 : lists.Count();

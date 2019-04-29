@@ -6,7 +6,10 @@
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 日志管理 <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 系统日志 <span class="c-gray en">&gt;</span> 列表
+    <a id="btn_refresh" class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
 <div class="page-container">
     <div class="text-c">
         日期范围：
@@ -37,7 +40,6 @@
                 <tr class="text-c">
                     <th width="25"><input type="checkbox" name="" value=""></th>
                     <th width="60">序号</th>
-                    <th width="80">公司编号</th>
                     <th width="80">工号</th>
                     <th width="80">姓名</th>
                     <th width="80">客户端</th>
@@ -56,7 +58,6 @@
                         <tr class="text-c">
                             <td><input type="checkbox" name="id" value="@m.ID"></td>
                             <td>@m.ID</td>
-                            <td>@m.CompanyID</td>
                             <td>@(Html.Raw(Utility.Highlight(m.Account, ViewBag.keyword)))</td>
                             <td>@(Html.Raw(Utility.Highlight(m.NickName, ViewBag.keyword)))</td>
                             <td>@m.ClientName</td>
@@ -94,7 +95,7 @@
                             "aaSorting": [[1, "desc"]],//默认第几个排序
                             "bStateSave": true,//状态保存
                             "aoColumnDefs": [
-                              { "orderable": false, "aTargets": [0, 10] }// 制定列不参与排序
+                              { "orderable": false, "aTargets": [0, 9] }// 制定列不参与排序
                             ],
                             "aLengthMenu": [10, 25, 50, 100]
                         });

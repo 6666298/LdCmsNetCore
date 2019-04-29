@@ -19,11 +19,15 @@ namespace LdCms.IBLL.Info
         Ld_Info_Artice GetArtice(int systemId, string companyId, string articeId);
         List<Ld_Info_Artice> GetArticeTop(int systemId, string companyId, bool delete, int count);
         List<Ld_Info_Artice> GetArticeTop(int systemId, string companyId, string classId, bool delete, int count);
+        List<Ld_Info_Artice> GetArticeTop(int systemId, string companyId, string classId, string state, bool delete, int count);
         List<Ld_Info_Artice> GetArticePaging(int systemId, string companyId, bool delete, int pageId, int pageSize);
         List<Ld_Info_Artice> GetArticePaging(int systemId, string companyId, string classId, bool delete, int pageId, int pageSize);
+        List<Ld_Info_Artice> GetArticePaging(int systemId, string companyId, string classId, string state, bool delete, int pageId, int pageSize);
+        List<Ld_Info_Artice> SearchArtice(int systemId, string companyId, string keyword);
         List<Ld_Info_Artice> SearchArtice(int systemId, string companyId, string startTime, string endTime, string classId, string state, string keyword, bool delete);
         int CountArtice(int systemId, string companyId, bool delete);
         int CountArtice(int systemId, string companyId, string classId, bool delete);
+        int CountArtice(int systemId, string companyId, string classId, string state, bool delete);
 
     }
 }

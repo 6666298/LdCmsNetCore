@@ -181,18 +181,7 @@ namespace LdCms.Web.Controllers.MVC.Extend
         }
         #endregion
 
-        private void SaveKeyword()
-        {
-            SearchKeywordService.SaveSearchKeyword(new Ld_Extend_SearchKeyword()
-            {
-                SystemID = SystemID,
-                CompanyID = CompanyID,
-                ClientID = (int)Common.Enum.ParamEnum.Client.Web,
-                ClientName = Common.Enum.ParamEnum.Client.Web.ToString(),
-                Keyword = "ldcms",
-                IpAddress = Net.Ip
-            });
-        }
+
 
 
 

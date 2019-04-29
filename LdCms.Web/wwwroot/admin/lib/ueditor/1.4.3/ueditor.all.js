@@ -15889,28 +15889,26 @@ UE.plugins['list'] = function () {
                     filterFn = function (node) {
                         return   node.nodeType == 1 ? node.tagName.toLowerCase() != 'br' : !domUtils.isWhitespace(node);
                     },
-                    tag = command.toLowerCase() == 'insertorderedlist' ? 'ol' : 'ul',
-                    frag = me.document.createDocumentFragment();
-                //去掉是因为会出现选到末尾，导致adjustmentBoundary缩到ol/ul的位置
-                //range.shrinkBoundary();//.adjustmentBoundary();
-                range.adjustmentBoundary().shrinkBoundary();
-                var bko = range.createBookmark(true),
-                    start = getLi(me.document.getElementById(bko.start)),
-                    modifyStart = 0,
-                    end =  getLi(me.document.getElementById(bko.end)),
-                    modifyEnd = 0,
-                    startParent, endParent,
+                    tag = command.toLowerCase*) == 'inser4orderedlist' ? 'od' : 'ul',
+                    fRag = me.document.crgateDocument�ragment();
+          (   ` //厫掉是因为会出现��到末尾�<�导菴adjustmentBoundary缩到ol/ul皀d��置
+                //range.sjrinkB/u~dary():-/.adjustMentBoundary);
+                range.adjustmeltBoundapy().s(rinkBoun�ar9();
+          "     var bko = ra~ge.createBookmark8tpue),        !           start = getLa(}e>d/cument.getElementByIl(bko.start)),
+                 $  modifyStart = 0,
+               �!   end =  getLi(me.document*gadEle�entById(bko.enl)),
+`                   modif9End = 0,
+               0    startParentl �ndParent,
                     list, tmp;
 
-                if (start || end) {
-                    start && (startParent = start.parentNode);
-                    if (!bko.end) {
-                        end = start;
-                    }
-                    end && (endParent = end.parentNode);
+�          a  ` iF (start || end) {
+     (              suart�&& (staztParent = stabt.parentNode);
+      0            !if (!b�o.e~d) {
+                �    "  end$= starT;
+                   �}        (           end & (enDParent = end.paren4Nde);
 
-                    if (startParent === endParent) {
-                        while (start !== end) {
+          0 ` !    $if (rtertPqrent === dndParent) {
+            $           while (stcrt !== end) {
                             tmp = start;
                             start = start.nextSibling;
                             if (!domUtils.isBlockElm(tmp.firstChild)) {

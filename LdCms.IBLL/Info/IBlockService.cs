@@ -13,6 +13,7 @@ namespace LdCms.IBLL.Info
         bool UpdateBlockState(int systemId, string companyId, string blockId, bool state);
         bool DeleteBlock(int systemId, string companyId, string blockId);
         Ld_Info_Block GetBlock(int systemId, string companyId, string blockId);
+        Ld_Info_Block GetBlock(int systemId, string companyId, string tags, string state);
         List<Ld_Info_Block> GetBlockAll(int systemId, string companyId, string state);
         List<Ld_Info_Block> GetBlock(int systemId, string companyId, int pageId, int pageSize);
         List<Ld_Info_Block> SearchBlock(int systemId, string companyId, string startTime, string endTime, string state, string keyword);

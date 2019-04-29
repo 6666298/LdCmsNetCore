@@ -15,11 +15,13 @@ namespace LdCms.Web.Controllers.API.Member.V2
     using LdCms.Common.Security;
     using LdCms.Common.Net;
     using LdCms.Common.Time;
+    using LdCms.Common.Extension;
     /// <summary>
     /// 前后端分离API
     /// </summary>
     [ApiVersion("2.0")]
     [EnableCors("AllowSameDomain")]
+    [ControllerName("member")]
     public partial class MemberController : BaseApiController
     {
         private readonly IBaseApiManager BaseApiManager;
@@ -151,8 +153,8 @@ namespace LdCms.Web.Controllers.API.Member.V2
         /// </summary>
         /// <param name="access_token"></param>
         /// <returns></returns>
-        [HttpPost]
-        [ActionName("get")]
+        [HttpGet("get")]
+        [ActionName("info")]
         public IActionResult GetMember(string access_token)
         {
             long logId = 0;
@@ -162,11 +164,25 @@ namespace LdCms.Web.Controllers.API.Member.V2
                 logId = BaseApiManager.SaveLogs(access_token);
                 if (!IsAccessToken(access_token))
                     return Error(logId, "验证access_token失败！");
-                var result = AccountService.GetAccountByAccessTokenPro(systemId, access_token);
+                var entity = AccountService.GetAccountByAccessTokenPro(systemId, access_token);
                 var data = new
                 {
-                    memberid = result.MemberID,
-                    nickname = result.NickName
+                    memberid = entity.MemberID,
+                    rank_id = entity.RankID,
+                    rank_name = entity.RankName,
+                    user_name = entity.UserName,
+                    company_name = entity.CompanyName.IIF(""),
+                    name = entity.Name.IIF(""),
+                    nickname = entity.NickName.IIF(""),
+                    head_image_url = entity.HeadImageUrl.IIF(""),
+                    sex = entity.Sex.ToInt(),
+                    phone = entity.Phone,
+                    email = entity.Email.IIF(""),
+                    address = entity.Address.IIF(""),
+                    total_points = entity.TotalPoints.ToInt(),
+                    total_consumption = entity.TotalConsumption.ToDecimal(),
+                    total_amount = entity.TotalAmount.ToDecimal(),
+                    remark = entity.Remark.IIF(""),
                 };
                 return Success(logId, "ok", data);
             }
@@ -183,18 +199,18 @@ namespace LdCms.Web.Controllers.API.Member.V2
         /// <returns>
         /// cgi-bin/v2/member/token/refresh?uuid=460e64203493444ba27d4fc7ad7efae8&refresh_token=
         /// </returns>
-        [HttpGet("refresh")]
+        [HttpPost("refresh")]
         [ActionName("token")]
-        public IActionResult RefreshToken(string uuid, string refresh_token)
+        public IActionResult RefreshToken(string uuid, [FromBody]JObject fromValue)
         {
             long logId = 0;
             try
             {
                 logId = BaseApiManager.SaveLogs(uuid);
-                if (!IsUuid(uuid))
-                    return Error(logId, "verify uuid fail！");
-                if (string.IsNullOrWhiteSpace(refresh_token))
-                    return Error(logId, "refresh token not empty！");
+                if (!IsUuid(uuid)) { return Error(logId, "verify uuid fail！"); }
+                bool isParams = IsLoginParams(fromValue);
+                string fRefreshToken = GetJObjectValue(fromValue, "refresh_token");
+                if (string.IsNullOrWhiteSpace(fRefreshToken)) { return Error(logId, "refresh token not empty！"); }
                 var tokenService = new Common.Token.TokenHelper();
                 string token = tokenService.GetToken();
                 string refreshToken = tokenService.GetToken();
@@ -202,7 +218,7 @@ namespace LdCms.Web.Controllers.API.Member.V2
                 int refreshTokenExpiresIn = RefreshTokenExpiresIn;
                 string ipAddress = Net.Ip;
                 int createTimestamp = TimeHelper.GetUnixTimestamp();
-                var createResult = AccessTokenService.SaveRefreshTokenPro(refresh_token, token, refreshToken, expiresIn, refreshTokenExpiresIn, ipAddress, createTimestamp);
+                var createResult = AccessTokenService.SaveRefreshTokenPro(fRefreshToken, token, refreshToken, expiresIn, refreshTokenExpiresIn, ipAddress, createTimestamp);
                 if (createResult)
                 {
                     var entityMember = AccessTokenService.GetAccessToken(token);
@@ -231,7 +247,7 @@ namespace LdCms.Web.Controllers.API.Member.V2
         /// </returns>
         [HttpGet("verify")]
         [ActionName("token")]
-        public IActionResult VerifyToken(string access_token)
+        public IActionResult VerifyToken(string access_token, string memberid)
         {
             long logId = 0;
             try
@@ -280,6 +296,21 @@ namespace LdCms.Web.Controllers.API.Member.V2
                     throw new Exception("lack phone params！");
                 if (formValue.Property("password") == null)
                     throw new Exception("lack password params！");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private bool IsRefreshTokenParams(JObject formValue)
+        {
+            try
+            {
+                if (formValue == null)
+                    throw new Exception("params not empty！");
+                if (formValue.Property("refresh_token") == null)
+                    throw new Exception("lack refresh_token params！");
                 return true;
             }
             catch (Exception ex)
